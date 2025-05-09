@@ -18,6 +18,14 @@ import Kotlin from "@/icons/kotlin.astro";
 import Flutter from "@/icons/flutter.astro";
 import Figma from "@/icons/Figma.astro";
 import Gitlab from "@/icons/Gitlab.astro";
+import Dotnet from "@/icons/dotnet.astro";
+import Angular from "@/icons/angular.astro";
+import PostgreSQL from "@/icons/postgresql.astro";
+import AstroIcon from "@/icons/astro.astro";
+import Docker from "@/icons/docker.astro";
+import Kubernetes from "@/icons/kubernetes.astro";
+import Firebase from "@/icons/firebase.astro";
+import PHP from "@/icons/php.astro";
 
 const SKILLS_ICONS: Record<string, any> = {
 	HTML,
@@ -37,6 +45,14 @@ const SKILLS_ICONS: Record<string, any> = {
 	Flutter,
 	Figma,
 	Gitlab,
+	Dotnet,
+	Angular,
+	PostgreSQL,
+	AstroIcon,
+	Docker,
+	Kubernetes,
+	Firebase,
+	PHP,
 };
 ---
 
@@ -44,7 +60,7 @@ const SKILLS_ICONS: Record<string, any> = {
 	<ul class="[&>li>svg]:text-skin-hue inline-flex flex-wrap gap-6 [&>li>svg]:size-5 [&>li]:text-sm">
 		{
 			skills.map(({ name }) => {
-				const iconName = name === "Next.js" ? "Next" : name;
+				const iconName = name === "Next.js" ? "Next" : name === ".NET" ? "Dotnet" : name === "Astro" ? "AstroIcon" : name;
 				const Icon = SKILLS_ICONS[iconName];
 
 				return (

@@ -17,6 +17,16 @@ import Swift from "@/icons/swift.astro"
 import SwiftUI from "@/icons/swiftui.astro"
 import Kotlin from "@/icons/kotlin.astro"
 import Flutter from "@/icons/flutter.astro"
+import Figma from "@/icons/Figma.astro"
+import Gitlab from "@/icons/Gitlab.astro"
+import Dotnet from "@/icons/dotnet.astro"
+import Angular from "@/icons/angular.astro"
+import PostgreSQL from "@/icons/postgresql.astro"
+import AstroIcon from "@/icons/astro.astro"
+import Docker from "@/icons/docker.astro"
+import Kubernetes from "@/icons/kubernetes.astro"
+import Firebase from "@/icons/firebase.astro"
+import PHP from "@/icons/php.astro"
 
 const SKILLS_ICONS: Record<string, any> = {
   HTML,
@@ -34,6 +44,16 @@ const SKILLS_ICONS: Record<string, any> = {
   SwiftUI,
   Kotlin,
   Flutter,
+  Figma,
+	Gitlab,
+  Dotnet,
+  Angular,
+  PostgreSQL,
+  AstroIcon,
+  Docker,
+  Kubernetes,
+  Firebase,
+  PHP,
 }
 ---
 <Section className={Astro.props.className} title="Experience">
@@ -76,7 +96,7 @@ const SKILLS_ICONS: Record<string, any> = {
               <div class="mt-4  print:gap-0 flex flex-col gap-4 print:text-xs text-sm" x-data="{ expanded: false }">
                 {summary && (
                   <div class="flex flex-col gap-1">
-                    <p>Summary:</p>
+                    <h4>Summary:</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {Array.isArray(summary) ? (
                         summary.map(item => (
@@ -94,7 +114,7 @@ const SKILLS_ICONS: Record<string, any> = {
                   :class="expanded ? 'after:hidden' : ''" x-show="expanded" x-collapse.min.50px >
                 {responsibilities && (
                   <div class="flex flex-col gap-1">
-                    <p>Responsibilities:</p>
+                    <h4>Responsibilities:</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {responsibilities.map(responsibility => (
                         <li>{responsibility}</li>
@@ -105,7 +125,7 @@ const SKILLS_ICONS: Record<string, any> = {
 
                 {achievements && (
                   <div class="flex flex-col gap-1">
-                    <p>Achievements:</p>
+                    <h4>Achievements:</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {achievements.map(achievement => (
                         <li>{achievement}</li>
@@ -123,11 +143,11 @@ const SKILLS_ICONS: Record<string, any> = {
 
                 <ul class="flex print:hidden flex-wrap gap-2" aria-label="Technologies used">
                   {skills && skills.map(skill => {
-                    const iconName = skill === "Next.js" ? "Next" : skill
+                    const iconName = skill === "Next.js" ? "Next" : skill === ".NET" ? "Dotnet" : skill === "Astro" ? "AstroIcon" : skill;
                     const Icon = SKILLS_ICONS[iconName]
                     return (
                       <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs">
-                        {Icon && <Icon />} <span>{skill}</span>
+                        <span>{skill}</span>
                       </li>
                     )
                   })}

@@ -1,195 +1,238 @@
 {
   "basics": {
-    "name": "John Doe",
-    "label": "Junior Full Stack Developer",
+    "name": "Amer Fathullah",
+    "label": "Full-Stack Developer",
     "image": "/me_avatar.avif",
-    "email": "john.doe@example.com",
-    "phone": "+1 555-555-5555",
-    "url": "https://johndoe.dev",
-    "summary": "Junior Full Stack Developer with a passion for building web applications. Currently seeking opportunities to further develop my skills in a professional setting.",
+    "email": "amerfathullah@gmail.com",
+    "phone": "+60105752992",
+    "url": "https://amerfathullah.com",
+    "summary": "Full-Stack Developer with a passion for building web applications. Currently seeking opportunities to further develop my skills in a professional setting.",
     "theme": "default",
     "location": {
       "address": "",
-      "postalCode": "10001",
-      "city": "Auckland",
-      "countryCode": "NZ",
-      "region": "New Zealand"
+      "postalCode": "21200",
+      "city": "Kuala Terengganu",
+      "countryCode": "MY",
+      "region": "Terengganu"
     },
     "profiles": [
       {
         "network": "LinkedIn",
-        "username": "john-doe",
-        "url": "https://linkedin.com/in/john-doe"
-      },
-      {
-        "network": "X",
-        "username": "john-doe",
-        "url": "https://x.com/john-doe"
+        "username": "amerfathullah",
+        "url": "https://www.linkedin.com/in/amerfathullah"
       },
       {
         "network": "GitHub",
-        "username": "johndoe",
-        "url": "https://github.com/johndoe"
+        "username": "amerfathullah",
+        "url": "https://github.com/amerfathullah"
       }
     ]
   },
   "work": [
     {
-      "name": "Tech Startup",
-      "position": "Junior Web Developer",
-      "location_type": "On site",
-      "location": "Auckland, New Zealand",
-      "url": "https://techstartup.com",
-      "startDate": "2024-01-01",
+      "name": "TFX Islamic Sdn Bhd",
+      "position": "Full-Stack DevOps Engineer",
+      "location_type": "Remote",
+      "location": "Petaling Jaya, Selangor, Malaysia",
+      "url": "https://www.tfxislamic.com",
+      "startDate": "2022-06-01",
       "endDate": null,
-      "summary": "Developing and maintaining web applications using JavaScript, HTML, and CSS. Collaborating with the team to implement new features and fix bugs.",
+      "summary": "Developing and maintaining web applications using Angular, .NET and PostgreSQL. Collaborating with the team to implement new features and fix bugs.",
       "highlights": [
         "Improved website performance by optimizing code"
       ],
       "responsibilities": [
-        "Collaborated with senior developers to design and implement web applications using modern JavaScript frameworks.",
+        "Develop front-end modules for the SCF platform, website, mobile app, and other related apps.",
         "Assisted in debugging and optimizing front-end code to ensure smooth user experiences.",
         "Participated in code reviews and contributed to improving coding standards within the team."
       ],
-      "achievements": [
-        "Developing and maintaining web applications using JavaScript, HTML, and CSS. Collaborating with the team to implement new features and fix bugs."
-      ],
       "skills": [
-        "React",
-        "Tailwind",
-        "GitHub"
+        ".NET",
+        "Angular",
+        "Docker",
+        "Kubernetes",
+        "PostgreSQL"
       ]
     },
     {
-      "name": "Innovative Solutions",
-      "position": "Junior Software Developer",
-      "location_type": "Hybrid",
-      "location": "Wellington, New Zealand",
-      "url": "https://innovativesolutions.com",
-      "startDate": "2022-06-01",
-      "endDate": "2023-06-01",
-      "summary": "Assisting in the development and maintenance of software applications using Python and Django. Collaborating with cross-functional teams to ensure quality and timely delivery of software solutions.",
-      "highlights": [
-        "Contributed to a major project that streamlined internal workflows, improving efficiency by 30%"
-      ],
+      "name": "CEFS Response",
+      "position": "Technical Review & Communication Executive",
+      "location_type": "On-Site",
+      "location": "Kertih, Terengganu, Malaysia",
+      "url": "https://cefs-response.com.my",
+      "startDate": "2022-03-01",
+      "endDate": "2022-05-31",
       "responsibilities": [
-        "Developed and maintained backend services using Python and Django.",
-        "Worked closely with front-end developers to integrate user-facing elements with server-side logic.",
-        "Participated in daily stand-ups and bi-weekly sprint planning meetings to ensure alignment with project goals."
-      ],
-      "achievements": [
-        "Successfully implemented a feature that enhanced user authentication, improving security measures."
+        "Develop apps for digitalization & automation of the company's work process.",
+        "Negotiate with vendors and contractors that supply the company's equipment.",
+        "Participate in industrial firefighting training.",
+        "Review the equipment inspection report on a monthly basis."
       ],
       "skills": [
-        "Python",
-        "Django",
-        "SQL",
-        "Git"
+        "Dart",
+        "Firebase",
+        "Firefighting",
+        "Fire Safety",
+        "Flutter"
       ]
     },
     {
-      "name": "Web Agency",
-      "position": "Intern Web Developer",
+      "name": "Skymind",
+      "position": "Frontend & AI Engineer",
       "location_type": "Remote",
-      "location": "Sydney, Australia",
-      "startDate": "2022-06-01",
-      "endDate": "2022-12-01",
+      "location": "Georgetown, Penang, Malaysia",
+      "startDate": "2021-01-01",
+      "endDate": "2021-12-31",
       "summary": "Assisted in developing client websites and applications. Gained hands-on experience with front-end and back-end technologies.",
       "highlights": [
-        "Completed several client projects successfully"
+        "Research reinforcement learning algorithms suitable for smart traffic light systems to reduce the traffic congestion problems at the traffic light using a traffic simulation program."
+      ],
+      "responsibilities": [
+        "Develop the front end of an Al-based security camera monitoring system that detects potential dangers across multiple video footage.",
+        "Develop Vpass administration dashboard to keep track and monitor the COVID-19 status of employees within an enterprise.",
+        "Develop a dashboard for Vpass pharmacist to handle false positive results of Vpass COVID-19 test kit.",
+        "Research and develop AI model using machine learning or deep learning to detect vehicles and simulate it in an open-world simulation program.",
+        "Write documentation on the research methodology.",
+        "Mentoring for AI-GET program."
+      ],
+      "achievements": [
+        "Help in the frontend development of Vpass website, an Al-based web application to facilitate contact tracing efforts in response to the COVID-19 pandemic in Malaysia."
       ],
       "skills": [
+        "Github",
+        "Java",
+        "Python",
+        "React.js",
+        "Node.js"
+      ]
+    },
+    {
+      "name": "Sapura Thales Electronics Sdn Bhd",
+      "position": "Customer Service Engineer",
+      "location_type": "On-Site",
+      "location": "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+      "startDate": "2019-06-01",
+      "endDate": "2019-08-31",
+      "summary": "Learn and help in the development of the frontend and backend of an inventory management system that tracks and monitors the repair history of the company's products using PHP and MySQL.",
+      "skills": [
+        "CSS",
         "HTML",
-        "CSS"
+        "MySQL",
+        "PHP",
+        "XAMPP"
       ]
     }
   ],
   "volunteer": [
     {
-      "organization": "Local Coding Club",
-      "position": "Volunteer",
-      "url": "https://codingclub.com/",
-      "startDate": "2021-01-01",
-      "endDate": "2022-01-01",
-      "summary": "Helped organize coding workshops and mentored new members.",
+      "organization": "Amer Tech Solutions",
+      "position": "CEO",
+      "url": "https://amertechsolutions.amerfathullah.com",
+      "startDate": "2024-08-17",
+      "endDate": null,
+      "summary": "I'm the boss. I run the show.",
       "highlights": [
-        "Awarded 'Volunteer of the Month'"
+        "Awarded 'CEO of the Year' for outstanding leadership and innovation in the tech industry."
       ]
     }
   ],
   "education": [
     {
-      "institution": "State University",
-      "url": "https://stateuniversity.edu",
-      "area": "Computer Science",
-      "studyType": "Bachelor",
-      "startDate": "2018-09-01",
-      "endDate": "2022-05-01",
-      "score": "3.8",
+      "institution": "International Islamic University Of Malaysia",
+      "url": "https://www.iium.edu.my/v2",
+      "area": "Computer Engineering",
+      "studyType": "Bachelor's Degree",
+      "startDate": "2016-07-01",
+      "endDate": "2020-08-31",
+      "score": "3.44",
       "courses": [
-        "CS101 - Introduction to Computer Science",
-        "CS102 - Data Structures"
       ]
     },
     {
-      "institution": "Tech Institute",
-      "url": "https://techinstitute.edu",
-      "area": "Software Engineering",
-      "studyType": "Master",
-      "startDate": "2020-09-01",
-      "endDate": "2022-12-01",
-      "score": "3.9",
+      "institution": "Centre for Foundation Studies, International Islamic University Of Malaysia",
+      "url": "https://centre.iium.edu.my/cfs",
+      "area": "Physical Science",
+      "studyType": "Foundation",
+      "startDate": "2015-05-01",
+      "endDate": "2016-06-30",
+      "score": "3.164",
       "courses": [
-        "SE201 - Advanced Software Development",
-        "SE202 - Software Architecture and Design"
       ]
     },
     {
-      "institution": "City College",
-      "url": "https://citycollege.edu",
-      "area": "Information Technology",
-      "studyType": "Associate Degree",
-      "startDate": "2017-01-01",
-      "endDate": "2019-12-01",
-      "score": "3.7",
+      "institution": "SM Imtiaz YT Kuala Berang",
+      "url": "https://www.facebook.com/p/Sm-Imtiaz-YT-Kuala-Berang-100063732901060/?locale=ms_MY",
+      "area": "Religious Science Stream",
+      "studyType": "High School",
+      "startDate": "2010-01-01",
+      "endDate": "2014-12-31",
+      "score": "11A",
       "courses": [
-        "IT101 - Networking Fundamentals",
-        "IT102 - Database Management Systems"
       ]
     }
   ],
   "certificates": [
     {
-      "name": "Full Stack Web Development",
-      "date": "2023-05-01",
-      "issuer": "Online University",
-      "url": "https://onlineuniversity.com/certificates/fullstack"
+      "name": "Bachelor of Engineering (Electronics – Computer and Information) (Honours)",
+      "date": "2020-09-23",
+      "issuer": "International Islamic University Malaysia",
+      "url": "https://www.iium.edu.my/v2"
+    },
+    {
+      "name": "Certified Engineer in Computer Vision",
+      "date": "2020-12-01",
+      "issuer": "CertifAI",
+      "url": "https://cert.certifai.ai/1a9be791-bbb8-47af-be8f-57b70fa3028b"
+    },
+    {
+      "name": "Artificial Intelligence from Data Perspective",
+      "date": "2021-01-01",
+      "issuer": "CertifAI",
+      "url": "https://cert.certifai.ai/62fb724f-fb77-4117-99df-76a3169c3ef0"
+    },
+    {
+      "name": "Flutter & Dart - The Complete Guide [2022 Edition]",
+      "date": "2022-02-01",
+      "issuer": "Udemy",
+      "url": "https://www.udemy.com/certificate/UC-204d389d-7290-41b8-b858-c733d8f5b4bb"
+    },
+    {
+      "name": "Build an app with ASPNET Core and Angular from scratch",
+      "date": "2022-07-01",
+      "issuer": "Udemy",
+      "url": "ude.my/UC-47d01744-374f-44d9-bf87-a10df7f1e666"
     }
   ],
   "skills": [
     {
-      "name": "Figma",
-      "level": "Expert",
-      "keywords": [
-        "Design",
-        "UI"
-      ]
-    },
-    {
-      "name": "Gitlab",
-      "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code"
-      ]
-    },
-    {
-      "name": "HTML",
-      "level": "Intermediate",
+      "name": ".NET",
+      "level": "Strong",
       "keywords": [
         "Web Development",
-        "Frontend"
+        "Backend",
+        "Server",
+        "Web API"
+      ]
+    },
+    {
+      "name": "Angular",
+      "level": "Strong",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "React Framework",
+        "SSR",
+        "Static Generation"
+      ]
+    },
+    {
+      "name": "PostgreSQL",
+      "level": "Strong",
+      "keywords": [
+        "Databases",
+        "SQL",
+        "Data Storage",
+        "Backend"
       ]
     },
     {
@@ -199,56 +242,6 @@
         "Web Development",
         "Frontend",
         "Responsive Design"
-      ]
-    },
-    {
-      "name": "JavaScript",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Backend",
-        "Fullstack"
-      ]
-    },
-    {
-      "name": "Tailwind",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "CSS Framework",
-        "Responsive Design"
-      ]
-    },
-    {
-      "name": "TypeScript",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Backend",
-        "JavaScript Superset"
-      ]
-    },
-    {
-      "name": "Node",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Backend",
-        "JavaScript",
-        "Server"
-      ]
-    },
-    {
-      "name": "MySQL",
-      "level": "Intermediate",
-      "keywords": [
-        "Databases",
-        "SQL",
-        "Data Storage",
-        "Backend"
       ]
     },
     {
@@ -271,35 +264,122 @@
       ]
     },
     {
-      "name": "Next.js",
-      "level": "Beginner",
+      "name": "HTML",
+      "level": "Intermediate",
       "keywords": [
         "Web Development",
-        "Frontend",
-        "React Framework",
-        "SSR",
-        "Static Generation"
+        "Frontend"
       ]
     },
     {
-      "name": "React",
+      "name": "JavaScript",
       "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "Node",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "JavaScript",
+        "Server"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "JavaScript Superset"
+      ]
+    },
+    {
+      "name": "Astro",
+      "level": "Beginner",
       "keywords": [
         "Web Development",
         "Frontend",
         "JavaScript Library",
         "UI"
       ]
+    },
+    {
+      "name": "Docker",
+      "level": "Beginner",
+      "keywords": [
+        "Containerization",
+        "DevOps",
+        "Virtualization",
+        "Deployment"
+      ]
+    },
+    {
+      "name": "Kubernetes",
+      "level": "Beginner",
+      "keywords": [
+        "Container Orchestration",
+        "DevOps",
+        "Cloud Native",
+        "Deployment"
+      ]
+    },
+    {
+      "name": "Firebase",
+      "level": "Beginner",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "Server",
+        "Database"
+      ]
+    },
+    {
+      "name": "Flutter",
+      "level": "Beginner",
+      "keywords": [
+        "Mobile Development",
+        "Cross-Platform",
+        "Dart",
+        "UI Framework"
+      ]
+    },
+    {
+      "name": "PHP",
+      "level": "Beginner",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "Server",
+        "Web API"
+      ]
+    },
+    {
+      "name": "Tailwind",
+      "level": "Beginner",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "CSS Framework",
+        "Responsive Design"
+      ]
     }
   ],
   "languages": [
     {
-      "language": "English",
+      "language": "Malay",
       "fluency": "Native speaker"
     },
     {
-      "language": "Spanish",
-      "fluency": "Intermediate"
+      "language": "English",
+      "fluency": "Strong"
     }
   ],
   "interests": [
@@ -307,13 +387,55 @@
       "name": "Technology",
       "keywords": [
         "AI",
-        "Blockchain"
+        "Blockchain",
+        "Web Development",
+        "Software Engineering",
+        "Cloud Computing",
+        "Cybersecurity",
+        "Data Science",
+        "Machine Learning",
+        "DevOps",
+        "Agile Development",
+        "Open Source",
+        "Mobile Development",
+        "Game Development",
+        "UI/UX Design",
+        "Virtual Reality",
+        "Augmented Reality",
+        "Internet of Things",
+        "Quantum Computing",
+        "5G Technology",
+        "Wearable Technology",
+        "Digital Marketing",
+        "E-commerce",
+        "Social Media",
+        "Content Creation",
+        "SEO",
+        "Data Analytics",
+        "Big Data",
+        "Business Intelligence"
+      ]
+    },
+    {
+      "name": "Anime",
+      "keywords": [
+        "Attack on Titan",
+        "Death Note",
+        "Naruto",
+        "One Piece",
+        "My Hero Academia",
+        "Demon Slayer",
+        "Sword Art Online",
+        "Fullmetal Alchemist",
+        "Dragon Ball Z",
+        "Tokyo Ghoul",
+        "Hunter x Hunter"
       ]
     }
   ],
   "references": [
     {
-      "name": "Jane Smith",
+      "name": "Nikjey",
       "reference": "Reference…"
     }
   ],
@@ -323,42 +445,43 @@
       "isActive": false,
       "description": "A personal portfolio website to showcase my projects and skills.",
       "highlights": [
-        "Built with React and Tailwind CSS",
-        "Includes a blog and contact form"
+        "Built with Astro and Tailwind CSS"
       ],
-      "url": "https://johndoe.dev",
-      "github": "https://github.com"
+      "url": "https://amerfathullah.com",
+      "github": "https://github.com/amerfathullah/dev-portfolio"
     },
     {
-      "name": "Weather App",
+      "name": "Company Landing Page",
       "isActive": true,
-      "description": "A web application that provides weather information for any location.",
+      "description": "A website that displays services provided by my company.",
       "highlights": [
-        "Built with JavaScript and OpenWeatherMap API",
+        "Built with Astro",
         "Responsive design"
       ],
-      "url": "https://weatherapp.com"
+      "url": "https://amertechsolutions.amerfathullah.com",
+      "github": "https://github.com/amerfathullah/amertechsolutions"
     },
     {
-      "name": "Task Manager",
+      "name": "Enterprise Resource Planning",
       "isActive": true,
-      "description": "A simple task management app to keep track of daily tasks.",
+      "description": "A website that helps organisations streamline their core business processes.",
       "highlights": [
-        "Built with Node.js and MongoDB",
-        "User authentication and CRUD operations"
+        "Built with Angular, .NET and PostgreSQL",
+        "User authentication and CRUD operations",
+        "Connected with supply chain financing system"
       ],
-      "url": "https://taskmanager.com",
-      "github": "https://github.com"
+      "url": "https://app.tfxflow.com"
     },
     {
-      "name": "E-commerce Site",
-      "isActive": false,
-      "description": "An online store built with Next.js and Stripe for payment processing.",
+      "name": "Supply Chain Financing",
+      "isActive": true,
+      "description": "A financial solution that helps businesses in a supply chain by improving liquidity and optimizing working capital.",
       "highlights": [
-        "Product management and shopping cart functionality",
-        "Secure payment integration"
+        "Built with Angular, .NET and PostgreSQL",
+        "User authentication and CRUD operations",
+        "Connected with enterprise resource planning system"
       ],
-      "url": "https://ecommerce.com"
+      "url": "https://app.tfxislamic.com"
     }
   ]
 }
