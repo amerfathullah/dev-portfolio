@@ -112,3 +112,9 @@
     }
   }
 }
+
+@media print {
+  h1 {
+    font-size: 16px !important;
+  }
+}

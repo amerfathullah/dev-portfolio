@@ -33,3 +33,9 @@
     --color-skin-hue: rgb(var(--color));
     --color-skin-fill-muted: rgb(var(--muted));
   }
+
+@media print {
+  h1 {
+    font-size: 16px !important;
+  }
+}
