@@ -2,7 +2,7 @@
   "basics": {
     "name": "John Doe",
     "label": "Junior Full Stack Developer",
-    "image": "/me_avatar.jpg",
+    "image": "/me_avatar.avif",
     "email": "john.doe@example.com",
     "phone": "+1 555-555-5555",
     "url": "https://johndoe.dev",

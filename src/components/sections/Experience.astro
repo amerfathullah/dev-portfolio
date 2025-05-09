@@ -76,7 +76,7 @@ const SKILLS_ICONS: Record<string, any> = {
               <div class="mt-4  print:gap-0 flex flex-col gap-4 print:text-xs text-sm" x-data="{ expanded: false }">
                 {summary && (
                   <div class="flex flex-col gap-1">
-                    <h4>Summary:</h4>
+                    <p>Summary:</p>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {Array.isArray(summary) ? (
                         summary.map(item => (
@@ -94,7 +94,7 @@ const SKILLS_ICONS: Record<string, any> = {
                   :class="expanded ? 'after:hidden' : ''" x-show="expanded" x-collapse.min.50px >
                 {responsibilities && (
                   <div class="flex flex-col gap-1">
-                    <h4>Responsibilities:</h4>
+                    <p>Responsibilities:</p>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {responsibilities.map(responsibility => (
                         <li>{responsibility}</li>
@@ -105,7 +105,7 @@ const SKILLS_ICONS: Record<string, any> = {
 
                 {achievements && (
                   <div class="flex flex-col gap-1">
-                    <h4>Achievements:</h4>
+                    <p>Achievements:</p>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {achievements.map(achievement => (
                         <li>{achievement}</li>
@@ -141,8 +141,8 @@ const SKILLS_ICONS: Record<string, any> = {
     })}
   </ul>  
 </Section>
-<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
 <style>
 	@reference "@/styles/global.css";
