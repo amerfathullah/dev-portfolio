@@ -36,7 +36,12 @@ const { image, summary, url, theme } = basics;
 		<meta name="twitter:description" content={summary} />
 		<meta name="twitter:image" content="" />
 
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim" />
+		<!-- Preconnect to Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+		<!-- Load font non-blocking -->
+		<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet" />
 
 		<link rel="stylesheet" href="/themes/themes.css" />
 		<Vengeance />
