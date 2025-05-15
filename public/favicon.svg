@@ -1,7 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="55" height="37"><svg class="w-4 group-hover:animate-pulse" viewBox="0 0 55 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M22.0538 0.250122L0.687988 36.422H11.3709L21.8664 18.4298L32.5493 36.422H43.2322L37.9844 27.4259L22.0538 0.250122Z" fill="rgb(227,77,10)"></path>
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M43.2321 36.422L48.6673 27.4259L43.607 18.4297L37.9844 27.6133L43.2321 36.422Z" opacity="5" fill="rgb(227,77,10)" fill-opacity="0.8"></path>
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M32.9243 0.250122L43.4198 0.250122L54.1027 18.6172L48.6675 27.4259L32.9243 0.250122Z" fill="rgb(227,77,10)"></path>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="55" height="55"><svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55" fill="none">
+  <g transform="translate(0, 9)"> <!-- Shift down to center in the square -->
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M22.0538 0.250122L0.687988 36.422H11.3709L21.8664 18.4298L32.5493 36.422H43.2322L37.9844 27.4259L22.0538 0.250122Z" fill="rgb(227,77,10)"></path>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M43.2321 36.422L48.6673 27.4259L43.607 18.4297L37.9844 27.6133L43.2321 36.422Z" opacity="5" fill="rgb(227,77,10)" fill-opacity="0.8"></path>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M32.9243 0.250122L43.4198 0.250122L54.1027 18.6172L48.6675 27.4259L32.9243 0.250122Z" fill="rgb(227,77,10)"></path>
+  </g>
+  <style>
+    @media (prefers-color-scheme: light) { :root { filter: none; } }
+    @media (prefers-color-scheme: dark) { :root { filter: none; } }
+  </style>
 </svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
 @media (prefers-color-scheme: dark) { :root { filter: none; } }
 </style></svg>
