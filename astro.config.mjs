@@ -1,9 +1,12 @@
 import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  compressHTML: true, // Enables HTML minification
+  site: "https://www.amerfathullah.com/",
+  // Enables HTML minification
+  compressHTML: true,
   build: {
     inlineStylesheets: 'auto' // Helps reduce render-blocking CSS
   },
@@ -18,5 +21,6 @@ export default defineConfig({
       }
     },
     plugins: [tailwindcss()],
-  }
+  },
+  integrations: [sitemap()]
 });
