@@ -1,6 +1,5 @@
 ---
 import { basics } from "@cv";
-import Vengeance from "@/layouts/Vengeance.astro";
 import "@/styles/global.css";
 
 interface Props {
@@ -19,9 +18,11 @@ const { name, image, summary, url, theme, twitterSite } = basics;
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0" />
+		<meta name="author" content={name}/>
 		<meta name="description" content={summary} />
-		<title>{title}</title>
+		<meta name="msvalidate.01" content="13F1C597AB7D9F7EA52D639D1199C734" />
 		<link rel="canonical" href={url} />
+		<title>{title}</title>
 		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="shortcut icon" href="/favicon.ico" />
@@ -30,7 +31,6 @@ const { name, image, summary, url, theme, twitterSite } = basics;
 		<link rel="manifest" href="/site.webmanifest" />
 		<link rel="preload" as="image" href={image} />
 		
-		<meta name="msvalidate.01" content="13F1C597AB7D9F7EA52D639D1199C734" />
 
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		
@@ -38,11 +38,11 @@ const { name, image, summary, url, theme, twitterSite } = basics;
 		<meta itemprop="description" content={summary} />
 		<meta itemprop="image" content={image} />
 
-		<meta property="og:url" content={url} />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={summary} />
-		<meta property="og:image" content={image} />
+		<meta prefix="og: http://ogp.me/ns#" property="og:url" content={url} />
+		<meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
+		<meta prefix="og: http://ogp.me/ns#" property="og:title" content={title} />
+		<meta prefix="og: http://ogp.me/ns#" property="og:description" content={summary} />
+		<meta prefix="og: http://ogp.me/ns#" property="og:image" content={image} />
 
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content={twitterSite} />
@@ -52,6 +52,8 @@ const { name, image, summary, url, theme, twitterSite } = basics;
 		<meta name="twitter:description" content={summary} />
 		<meta name="twitter:image" content={image} />
 
+		<meta name="theme-color" content="#121212">
+
 		<!-- Preconnect to Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,7 +62,32 @@ const { name, image, summary, url, theme, twitterSite } = basics;
 		<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet" />
 
 		<link rel="stylesheet" href="/themes/themes.css" />
-		<Vengeance />
+		<script type="application/ld+json">
+		{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Amer Fathullah Nuaim bin Zakaria",
+		"url": "https://amerfathullah.com",
+		"image": "https://amerfathullah.com/me.png",
+		"sameAs": [
+			"https://www.linkedin.com/in/amerfathullah",
+			"https://twitter.com/AmerFathullah",
+			"https://www.instagram.com/amer_fathullah",
+			"https://www.facebook.com/amer.fathullah",
+			"https://github.com/amerfathullah"
+		],
+		"email": "amerfathullah@gmail.com",
+		"gender": "male",
+		"birthDate": "1997-08-17",
+		"jobTitle": "Full-Stack Software Developer",
+		"worksFor": {
+			"@type": "Organization",
+			"name": "TFX Islamic Sdn Bhd"
+		},
+		"nationality": "Malaysian",
+		"description": "Hi! I'm Amer Fathullah Nuaim bin Zakaria, a Full-Stack Software Developer based in Malaysia."
+		}
+		</script>
 	</head>
 	<body data-theme={theme} class="relative bg-skin-fill">
 		<div class="absolute top-0 -z-10 h-full w-full print:hidden">
