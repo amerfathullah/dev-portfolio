@@ -12,13 +12,13 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.5.1",
-    "@tailwindcss/vite": "^4.1.12",
-    "astro": "5.13.3",
+    "@tailwindcss/vite": "^4.1.13",
+    "astro": "5.13.7",
     "astro-font-picker": "^0.2.2",
     "hotkeypad": "^1.0.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "tailwindcss": "^4.1.12",
-    "terser": "^5.43.1",
+    "tailwindcss": "^4.1.13",
+    "terser": "^5.44.0",
     "typescript": "^5.9.2"
   },
   "devDependencies": {
