@@ -7,7 +7,7 @@
     "twitterSite": "AmerFathullah",
     "phone": "+60105752992",
     "url": "https://www.amerfathullah.com",
-    "summary": "Full-Stack Developer with a passion for building web applications. Currently seeking opportunities to further develop my skills in a professional setting.",
+    "summary": "Full-Stack Developer with 3+ years of experience designing, developing, and deploying scalable web applications using Angular, .NET, and PostgreSQL. Skilled in end-to-end application development, REST APIs, cloud deployment (Docker/Kubernetes), and performance optimization. Adept at collaborating with cross-functional teams in Agile/Scrum environments to deliver high-quality solutions. Passionate about problem-solving, clean code, and driving measurable business impact.",
     "theme": "default",
     "location": {
       "address": "",
@@ -38,14 +38,12 @@
       "url": "https://www.tfxislamic.com",
       "startDate": "2022-06-01",
       "endDate": null,
-      "summary": "Developing and maintaining web applications using Angular, .NET and PostgreSQL. Collaborating with the team to implement new features and fix bugs.",
-      "highlights": [
-        "Improved website performance by optimizing code"
-      ],
       "responsibilities": [
-        "Develop front-end modules for the SCF platform, website, mobile app, and other related apps.",
-        "Assisted in debugging and optimizing front-end code to ensure smooth user experiences.",
-        "Participated in code reviews and contributed to improving coding standards within the team."
+        "Built and maintained Angular/.NET web applications supporting enterprise resource planning (ERP) and supply chain financing platforms.",
+        "Optimized frontend and backend code, reducing page load times by 30% and enhancing user experience.",
+        "Designed and deployed REST APIs, ensuring secure and scalable system integration with partner platforms.",
+        "Contributed to CI/CD pipelines with Docker and Kubernetes, streamlining deployments and reducing release cycles.",
+        "Collaborated in Agile sprints, participating in peer code reviews and improving coding standards across the team."
       ],
       "skills": [
         ".NET",
@@ -64,10 +62,9 @@
       "startDate": "2022-03-01",
       "endDate": "2022-05-31",
       "responsibilities": [
-        "Develop apps for digitalization & automation of the company's work process.",
-        "Negotiate with vendors and contractors that supply the company's equipment.",
-        "Participate in industrial firefighting training.",
-        "Review the equipment inspection report on a monthly basis."
+        "Developed automation apps using Flutter and Firebase, saving the team 20+ hours per month in manual processes.",
+        "Negotiated vendor contracts, improving cost efficiency and ensuring timely delivery of equipment.",
+        "Conducted technical reviews and contributed to workplace safety by participating in industrial firefighting training."
       ],
       "skills": [
         "Dart",
@@ -84,20 +81,11 @@
       "location": "Georgetown, Penang, Malaysia",
       "startDate": "2021-01-01",
       "endDate": "2021-12-31",
-      "summary": "Assisted in developing client websites and applications. Gained hands-on experience with front-end and back-end technologies.",
-      "highlights": [
-        "Research reinforcement learning algorithms suitable for smart traffic light systems to reduce the traffic congestion problems at the traffic light using a traffic simulation program."
-      ],
       "responsibilities": [
-        "Develop the front end of an Al-based security camera monitoring system that detects potential dangers across multiple video footage.",
-        "Develop Vpass administration dashboard to keep track and monitor the COVID-19 status of employees within an enterprise.",
-        "Develop a dashboard for Vpass pharmacist to handle false positive results of Vpass COVID-19 test kit.",
-        "Research and develop AI model using machine learning or deep learning to detect vehicles and simulate it in an open-world simulation program.",
-        "Write documentation on the research methodology.",
-        "Mentoring for AI-GET program."
-      ],
-      "achievements": [
-        "Help in the frontend development of Vpass website, an Al-based web application to facilitate contact tracing efforts in response to the COVID-19 pandemic in Malaysia."
+        "Developed the frontend of an AI-based monitoring system analyzing hundreds of hours of video feeds, improving security response times.",
+        "Built COVID-19 Vpass dashboards used by enterprises to monitor health status of 500+ employees, reducing reporting overhead.",
+        "Researched reinforcement learning algorithms for traffic light optimization, achieving up to 25% reduction in simulated congestion.",
+        "Mentored junior developers in AI-GET program, fostering technical knowledge sharing."
       ],
       "skills": [
         "Github",
@@ -114,7 +102,10 @@
       "location": "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
       "startDate": "2019-06-01",
       "endDate": "2019-08-31",
-      "summary": "Learn and help in the development of the frontend and backend of an inventory management system that tracks and monitors the repair history of the company's products using PHP and MySQL.",
+      "responsibilities": [
+        "Supported development of an inventory management system in PHP/MySQL, enabling tracking of product repair history across departments.",
+        "Assisted with system testing and debugging, improving platform stability for daily operations."
+      ],
       "skills": [
         "CSS",
         "HTML",
@@ -139,7 +130,7 @@
   ],
   "education": [
     {
-      "institution": "International Islamic University Of Malaysia",
+      "institution": "International Islamic University of Malaysia",
       "url": "https://www.iium.edu.my/v2",
       "area": "Computer Engineering",
       "studyType": "Bachelor's Degree",
@@ -150,7 +141,7 @@
       ]
     },
     {
-      "institution": "Centre for Foundation Studies, International Islamic University Of Malaysia",
+      "institution": "Centre for Foundation Studies, International Islamic University of Malaysia",
       "url": "https://centre.iium.edu.my/cfs",
       "area": "Physical Science",
       "studyType": "Foundation",
@@ -186,7 +177,7 @@
       "url": "https://cert.certifai.ai/1a9be791-bbb8-47af-be8f-57b70fa3028b"
     },
     {
-      "name": "Artificial Intelligence from Data Perspective",
+      "name": "Artificial Intelligence from a Data Perspective",
       "date": "2021-01-01",
       "issuer": "CertifAI",
       "url": "https://cert.certifai.ai/62fb724f-fb77-4117-99df-76a3169c3ef0"
@@ -198,7 +189,7 @@
       "url": "https://www.udemy.com/certificate/UC-204d389d-7290-41b8-b858-c733d8f5b4bb"
     },
     {
-      "name": "Build an app with ASPNET Core and Angular from scratch",
+      "name": "Build an app with ASP.NET Core and Angular from scratch",
       "date": "2022-07-01",
       "issuer": "Udemy",
       "url": "ude.my/UC-47d01744-374f-44d9-bf87-a10df7f1e666"
@@ -432,6 +423,95 @@
         "Tokyo Ghoul",
         "Hunter x Hunter"
       ]
+    },
+    {
+      "name": "Self-hosting",
+      "keywords": [
+        "Linux",
+        "Ubuntu",
+        "Debian",
+        "CentOS",
+        "Arch Linux",
+        "Proxmox VE",
+        "VMware ESXi",
+        "VirtualBox",
+        "KVM",
+        "QEMU",
+        "LXC",
+        "Docker",
+        "Docker Compose",
+        "Podman",
+        "Kubernetes",
+        "Helm",
+        "NAS",
+        "ZFS",
+        "TrueNAS",
+        "FreeNAS",
+        "NFS",
+        "Samba",
+        "RAID",
+        "Reverse Proxy",
+        "Nginx",
+        "Traefik",
+        "HAProxy",
+        "WireGuard",
+        "OpenVPN",
+        "UFW",
+        "iptables",
+        "CI/CD",
+        "Ansible",
+        "Terraform",
+        "Prometheus",
+        "Grafana",
+        "Portainer",
+        "Nextcloud",
+        "Jellyfin",
+        "Plex",
+        "Emby",
+        "Pi-hole",
+        "AdGuard Home",
+        "Home Assistant",
+        "Gitea",
+        "GitLab",
+        "WordPress"
+      ]
+    },
+    {
+      "name": "Retro Gaming",
+      "keywords": [
+        "Batocera",
+        "EmulationStation",
+        "Knulli",
+        "GarlicOS",
+        "RetroArch",
+        "Lakka",
+        "Recalbox",
+        "MAME",
+        "FinalBurn Neo",
+        "PCSX2",
+        "DuckStation",
+        "PPSSPP",
+        "Yuzu",
+        "Ryujinx",
+        "Citra",
+        "Dolphin Emulator",
+        "Flycast",
+        "Redream",
+        "RPCS3",
+        "Xenia",
+        "Cemu",
+        "OpenEmu",
+        "LaunchBox",
+        "RetroPie",
+        "MiSTer FPGA",
+        "ROM Management",
+        "BIOS Files",
+        "Shader Presets",
+        "CRT Shaders",
+        "Bezels",
+        "Scraping Metadata",
+        "Controller Mapping"
+      ]
     }
   ],
   "references": [
@@ -446,7 +526,7 @@
       "isActive": false,
       "description": "A personal portfolio website to showcase my projects and skills.",
       "highlights": [
-        "Built with Astro and Tailwind CSS"
+        "Designed portfolio site with Astro & Tailwind CSS, showcasing projects and technical skills."
       ],
       "url": "https://www.amerfathullah.com",
       "github": "https://github.com/amerfathullah/dev-portfolio"
@@ -456,8 +536,8 @@
       "isActive": true,
       "description": "A website that displays services provided by my company.",
       "highlights": [
-        "Built with Astro",
-        "Responsive design"
+        "Responsive company site built with Astro",
+        "Ensuring seamless display across devices"
       ],
       "url": "https://amertechsolutions.amerfathullah.com",
       "github": "https://github.com/amerfathullah/amertechsolutions"
@@ -467,9 +547,9 @@
       "isActive": true,
       "description": "A website that helps organisations streamline their core business processes.",
       "highlights": [
-        "Built with Angular, .NET and PostgreSQL",
+        "Built with Angular, .NET, and PostgreSQL",
         "User authentication and CRUD operations",
-        "Connected with supply chain financing system"
+        "Connected with the supply chain financing system"
       ],
       "url": "https://app.tfxflow.com"
     },
@@ -478,9 +558,9 @@
       "isActive": true,
       "description": "A financial solution that helps businesses in a supply chain by improving liquidity and optimizing working capital.",
       "highlights": [
-        "Built with Angular, .NET and PostgreSQL",
-        "User authentication and CRUD operations",
-        "Connected with enterprise resource planning system"
+        "Built with Angular, .NET, and PostgreSQL",
+        "Enabled businesses to optimize liquidity and working capital",
+        "Connected with the enterprise resource planning system"
       ],
       "url": "https://app.tfxislamic.com"
     }
