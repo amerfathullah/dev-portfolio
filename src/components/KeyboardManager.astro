@@ -216,22 +216,23 @@ const profilesInfo = profiles.map(({ network, url }) => {
 	}
 	#hotkeypad {
 		--hotkeypad-bg-kbd: rgb(var(--muted));
-		--hotkeypad-bg-backdrop: rgb(var(--color-fill));
+		--hotkeypad-bg-backdrop: rgba(0, 0, 0, 0.5);
 		--hotkeypad-bg-container: rgb(var(--color-fill));
-		--hotkeypad-bg-item-hover: rgba(var(--color-text-base), 20%);
+		--hotkeypad-bg-item-hover: rgba(var(--color-text-base), 0.1);
 		--hotkeypad-border-container: rgb(var(--muted));
-		--hotkeypad-border-container-hover: rgb(var(--color-fill));
+		--hotkeypad-border-container-hover: rgb(var(--muted));
 		--hotkeypad-fg: rgb(var(--color-text-base));
-		--hotkeypad-fg-muted: rgb(var(--muted));
-		@media (prefers-color-scheme: dark) {
-			--hotkeypad-bg-kbd: rgb(var(--muted));
-			--hotkeypad-bg-backdrop: rgb(var(--color-fill));
-			--hotkeypad-bg-container: rgb(var(--color-fill));
-			--hotkeypad-bg-item-hover: rgba(var(--color-text-base), 10%);
-			--hotkeypad-border-container: rgb(var(--muted));
-			--hotkeypad-border-container-hover: rgb(var(--color-fill));
-			--hotkeypad-fg: rgb(var(--color-text-base));
-			--hotkeypad-fg-muted: rgb(var(--color-text-base));
-		}
+		--hotkeypad-fg-muted: rgb(var(--color-text-muted));
+	}
+
+	:global(.dark) #hotkeypad {
+		--hotkeypad-bg-kbd: rgb(var(--muted));
+		--hotkeypad-bg-backdrop: rgba(0, 0, 0, 0.7);
+		--hotkeypad-bg-container: rgb(var(--color-fill));
+		--hotkeypad-bg-item-hover: rgba(var(--color-text-base), 0.1);
+		--hotkeypad-border-container: rgb(var(--muted));
+		--hotkeypad-border-container-hover: rgb(var(--muted));
+		--hotkeypad-fg: rgb(var(--color-text-base));
+		--hotkeypad-fg-muted: rgb(var(--color-text-muted));
 	}
 </style>
