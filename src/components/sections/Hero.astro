@@ -8,8 +8,8 @@ import LinkedIn from "@/icons/LinkedIn.astro";
 import GitHub from "@/icons/GitHub.astro";
 import WorldMap from "@/icons/WorldMap.astro";
 import type { SocialIcon } from "@/types";
-import { Image } from 'astro:assets';
-import image from '../../../public/me_avatar.avif';
+import { Image } from "astro:assets";
+import image from "../../../public/me_avatar.avif";
 
 const { name, label, location, profiles, phone, email } = basics;
 const { city, region } = location;
@@ -31,7 +31,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 		<div class="info">
 			<h1>{name}</h1>
 			<h2>{label}</h2>
-			<div class="flex items-center gap-2 pt-2 text-sm text-skin-muted">
+			<div class="text-skin-muted flex items-center gap-2 pt-2 text-sm">
 				<WorldMap />
 				{city}, {region}
 			</div>
@@ -42,19 +42,26 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 				{
 					email && (
 						<div class="relative flex items-center">
-						<a
-							href={`mailto:${email}`}
-							class="group flex h-8 w-9 cursor-pointer items-center justify-center rounded-md text-skin-muted hover:bg-skin-button-accent hover:text-skin-inverted hover:[&>span]:text-skin-inverted"
-							title={`Send email to ${email}`}
-						>
-							<Mail />
-						</a>
+							<a
+								href={`mailto:${email}`}
+								class="group text-skin-muted hover:bg-skin-button-accent hover:text-skin-inverted hover:[&>span]:text-skin-inverted flex h-8 w-9 cursor-pointer items-center justify-center rounded-md"
+								title={`Send email to ${email}`}
+								aria-label={`Send email to ${name}`}
+							>
+								<Mail />
+							</a>
 						</div>
 					)
 				}
 				{
 					phone && (
-						<a href={`tel:${phone}`} title={`Call ${name} at ${phone}`} target="_blank" rel="noopener noreferrer">
+						<a
+							href={`tel:${phone}`}
+							title={`Call ${name} at ${phone}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={`Call ${name}`}
+						>
 							<Phone />
 						</a>
 					)
@@ -64,27 +71,68 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 						const Icon = SOCIAL_ICONS[network];
 
 						return (
-							<a href={url} title={`Visit ${name} profile on ${network}`} target="_blank" rel="noopener noreferrer">
+							<a
+								href={url}
+								title={`Visit ${name} profile on ${network}`}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={`Visit ${name} on ${network}`}
+							>
 								<Icon />
 							</a>
 						);
 					})
 				}
-				<div class="no-print footer-button max-sm:hidden group flex h-8 w-9 cursor-pointer items-center justify-center rounded-md text-skin-hue hover:bg-skin-button-accent hover:text-skin-inverted hover:[&>span]:text-skin-inverted">
-					<svg xmlns="http://www.w3.org/2000/svg" class="icon h-6 w-6 icon-tabler icon-tabler-command"  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-						<path d="M7 9a2 2 0 1 1 2 -2v10a2 2 0 1 1 -2 -2h10a2 2 0 1 1 -2 2v-10a2 2 0 1 1 2 2h-10"></path>
+				<div
+					class="no-print footer-button group text-skin-hue hover:bg-skin-button-accent hover:text-skin-inverted hover:[&>span]:text-skin-inverted flex h-8 w-9 cursor-pointer items-center justify-center rounded-md max-sm:hidden"
+					role="button"
+					tabindex="0"
+					aria-label="Open keyboard shortcuts"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="icon icon-tabler icon-tabler-command h-6 w-6"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						fill="none"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
+					>
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"
+						></path>
+						<path
+							d="M7 9a2 2 0 1 1 2 -2v10a2 2 0 1 1 -2 -2h10a2 2 0 1 1 -2 2v-10a2 2 0 1 1 2 2h-10"
+						></path>
 					</svg>
 				</div>
 			</footer>
 		</div>
-		<figure class="print:hidden w-fit relative">
-			<Image class="shadow-lg shadow-skin-hues" src={image} alt={name} loading="eager"/>
+		<figure class="relative w-fit print:hidden">
+			<Image
+				class="shadow-skin-hues shadow-lg"
+				src={image}
+				alt={name}
+				loading="eager"
+			/>
 			<div class="pointer-events-none absolute -inset-2">
-				<div class="absolute -inset-y-8 right-0 w-px bg-skin-hue/50 [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-				<div class="absolute -inset-y-8 left-0 w-px bg-skin-hue/50 [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-				<div class="absolute -inset-x-8 bottom-0 h-px bg-skin-hue/50 [mask-image:linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-				<div class="absolute -inset-x-8 top-0 h-px bg-skin-hue/50 [mask-image:linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
+				<div
+					class="bg-skin-hue/50 absolute -inset-y-8 right-0 w-px [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
+				>
+				</div>
+				<div
+					class="bg-skin-hue/50 absolute -inset-y-8 left-0 w-px [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
+				>
+				</div>
+				<div
+					class="bg-skin-hue/50 absolute -inset-x-8 bottom-0 h-px [mask-image:linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
+				>
+				</div>
+				<div
+					class="bg-skin-hue/50 absolute -inset-x-8 top-0 h-px [mask-image:linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
+				>
+				</div>
 			</div>
 		</figure>
 	</div>
@@ -101,7 +149,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 	}
 
 	h2 {
-		@apply text-balance text-base text-skin-muted print:text-lg;
+		@apply text-skin-muted text-base text-balance print:text-lg;
 	}
 
 	img {
@@ -109,15 +157,16 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 	}
 
 	span {
-		@apply flex items-center gap-1 text-xs text-skin-hue ;
+		@apply text-skin-hue flex items-center gap-1 text-xs;
 	}
 
 	footer {
-		@apply mt-2 flex gap-1 text-sm ;
+		@apply mt-2 flex gap-1 text-sm;
 	}
 
-	footer a, footer button {
-		@apply inline-flex size-8 items-center justify-center rounded-md p-1 transition-all duration-500 ease-linear text-skin-hue hover:bg-skin-button-accent hover:text-skin-inverted;
+	footer a,
+	footer button {
+		@apply text-skin-hue hover:bg-skin-button-accent hover:text-skin-inverted inline-flex size-8 items-center justify-center rounded-md p-1 transition-all duration-500 ease-linear;
 	}
 
 	@media (width <= 700px) {
@@ -126,7 +175,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 		}
 
 		.info {
-			@apply md:items-center md:justify-center pr-0 ;
+			@apply pr-0 md:items-center md:justify-center;
 		}
 
 		figure {
@@ -146,7 +195,10 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 <script>
 	const select = document.getElementById("themeSwitch") as HTMLSelectElement;
 	const theme = localStorage.getItem("theme");
-	const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+	const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+		.matches
+		? "dark"
+		: "light";
 
 	if (theme !== null) {
 		select.value = theme;
@@ -175,7 +227,10 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 
 	// Restaurar el modo oscuro después de imprimir
 	window.addEventListener("afterprint", () => {
-		if (select.value === "dark" || (select.value === "system" && systemTheme === "dark")) {
+		if (
+			select.value === "dark" ||
+			(select.value === "system" && systemTheme === "dark")
+		) {
 			document.documentElement.classList.add("dark");
 		}
 	});

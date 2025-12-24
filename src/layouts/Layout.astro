@@ -1,5 +1,5 @@
 ---
-import { basics } from "@cv";
+import { basics, skills } from "@cv";
 import "@/styles/global.css";
 
 interface Props {
@@ -8,90 +8,161 @@ interface Props {
 
 const { title } = Astro.props;
 
-const { name, image, summary, url, theme, twitterSite } = basics;
----
+const { name, label, image, summary, url, theme, twitterSite } = basics;
 
+// Generate absolute URL for images (required for OG/Twitter)
+const absoluteImageUrl = new URL(image, url).href;
+
+// Generate keywords from skills
+const keywords = skills.map((skill: { name: string }) => skill.name).join(", ");
+---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0" />
-		<meta name="author" content={name}/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, minimum-scale=1.0, initial-scale=1.0"
+		/>
+		<meta name="author" content={name} />
 		<meta name="description" content={summary} />
+		<meta name="keywords" content={keywords} />
 		<meta name="msvalidate.01" content="13F1C597AB7D9F7EA52D639D1199C734" />
 		<link rel="canonical" href={url} />
 		<title>{title}</title>
-		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link
+			rel="icon"
+			type="image/png"
+			href="/favicon-96x96.png"
+			sizes="96x96"
+		/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/apple-touch-icon.png"
+		/>
 		<meta name="apple-mobile-web-app-title" content={name} />
 		<link rel="manifest" href="/site.webmanifest" />
 		<link rel="preload" as="image" href={image} />
-		
 
 		<link rel="sitemap" href="/sitemap-index.xml" />
-		
+
 		<meta itemprop="name" content={name} />
 		<meta itemprop="description" content={summary} />
-		<meta itemprop="image" content={image} />
+		<meta itemprop="image" content={absoluteImageUrl} />
 
 		<meta prefix="og: http://ogp.me/ns#" property="og:url" content={url} />
-		<meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
-		<meta prefix="og: http://ogp.me/ns#" property="og:title" content={title} />
-		<meta prefix="og: http://ogp.me/ns#" property="og:description" content={summary} />
-		<meta prefix="og: http://ogp.me/ns#" property="og:image" content={image} />
+		<meta
+			prefix="og: http://ogp.me/ns#"
+			property="og:type"
+			content="website"
+		/>
+		<meta
+			prefix="og: http://ogp.me/ns#"
+			property="og:title"
+			content={title}
+		/>
+		<meta
+			prefix="og: http://ogp.me/ns#"
+			property="og:description"
+			content={summary}
+		/>
+		<meta
+			prefix="og: http://ogp.me/ns#"
+			property="og:image"
+			content={absoluteImageUrl}
+		/>
+		<meta
+			prefix="og: http://ogp.me/ns#"
+			property="og:image:alt"
+			content={`${name} - ${label}`}
+		/>
+		<meta
+			prefix="og: http://ogp.me/ns#"
+			property="og:site_name"
+			content={`${name} Portfolio`}
+		/>
+		<meta
+			prefix="og: http://ogp.me/ns#"
+			property="og:locale"
+			content="en_US"
+		/>
 
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:site" content={twitterSite} />
+		<meta name="twitter:site" content={`@${twitterSite}`} />
+		<meta name="twitter:creator" content={`@${twitterSite}`} />
 		<meta property="twitter:domain" content={url.split("//")[1] ?? ""} />
 		<meta property="twitter:url" content={url} />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={summary} />
-		<meta name="twitter:image" content={image} />
+		<meta name="twitter:image" content={absoluteImageUrl} />
+		<meta name="twitter:image:alt" content={`${name} - ${label}`} />
 
-		<meta name="theme-color" content="#121212">
+		<meta name="theme-color" content="#121212" />
 
 		<!-- Preconnect to Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
 		<!-- Load font non-blocking -->
-		<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Itim&display=swap"
+			rel="stylesheet"
+		/>
 
 		<link rel="stylesheet" href="/themes/themes.css" />
-		<script type="application/ld+json">
-		{
-		"@context": "https://schema.org",
-		"@type": "Person",
-		"name": "Amer Fathullah Nuaim bin Zakaria",
-		"url": "https://www.amerfathullah.com",
-		"image": "https://www.amerfathullah.com/me.png",
-		"sameAs": [
-			"https://www.linkedin.com/in/amerfathullah",
-			"https://twitter.com/AmerFathullah",
-			"https://www.instagram.com/amer_fathullah",
-			"https://www.facebook.com/amer.fathullah",
-			"https://github.com/amerfathullah"
-		],
-		"email": "me@amerfathullah.com",
-		"gender": "male",
-		"birthDate": "1997-08-17",
-		"jobTitle": "Full-Stack Software Developer",
-		"worksFor": {
-			"@type": "Organization",
-			"name": "TFX Islamic Sdn Bhd"
-		},
-		"nationality": "Malaysian",
-		"description": "Hi! I'm Amer Fathullah Nuaim bin Zakaria, a Full-Stack Software Developer based in Malaysia."
-		}
-		</script>
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify([
+				{
+					"@context": "https://schema.org",
+					"@type": "WebSite",
+					name: `${name} Portfolio`,
+					url: url,
+					description: summary,
+					author: {
+						"@type": "Person",
+						name: name,
+					},
+				},
+				{
+					"@context": "https://schema.org",
+					"@type": "Person",
+					name: name,
+					url: url,
+					image: absoluteImageUrl,
+					sameAs: [
+						"https://www.linkedin.com/in/amerfathullah",
+						"https://twitter.com/AmerFathullah",
+						"https://www.instagram.com/amer_fathullah",
+						"https://www.facebook.com/amer.fathullah",
+						"https://github.com/amerfathullah",
+					],
+					email: "me@amerfathullah.com",
+					jobTitle: label,
+					knowsAbout: skills
+						.slice(0, 10)
+						.map((skill: { name: string }) => skill.name),
+					worksFor: {
+						"@type": "Organization",
+						name: "TFX Islamic Sdn Bhd",
+					},
+					nationality: "Malaysian",
+					description: summary,
+				},
+			])}
+		/>
 	</head>
-	<body data-theme={theme} class="relative bg-skin-fill">
+	<body data-theme={theme} class="bg-skin-fill relative">
 		<div class="absolute top-0 -z-10 h-full w-full print:hidden">
-			<div class="bg-skin-hue/10 absolute bottom-auto left-[20%] right-auto top-0 h-[200px] w-[200px] -translate-x-[30%] translate-y-[20%] rounded-full blur-[80px] invert-0 dark:bg-white/5"></div>
+			<div
+				class="bg-skin-hue/10 absolute top-0 right-auto bottom-auto left-[20%] h-[200px] w-[200px] -translate-x-[30%] translate-y-[20%] rounded-full blur-[80px] invert-0 dark:bg-white/5"
+			>
+			</div>
 		</div>
 		<slot />
 		<style is:global>

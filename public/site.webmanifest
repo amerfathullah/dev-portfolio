@@ -1,6 +1,10 @@
 {
-  "name": "Amer Fathullah",
+  "name": "Amer Fathullah Portfolio",
   "short_name": "Amer",
+  "description": "Full-Stack Developer portfolio showcasing web development projects, skills, and experience.",
+  "start_url": "/",
+  "scope": "/",
+  "id": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
