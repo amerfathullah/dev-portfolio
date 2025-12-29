@@ -1,6 +1,10 @@
 import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
 import sitemap from '@astrojs/sitemap';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +15,11 @@ export default defineConfig({
     inlineStylesheets: 'auto' // Helps reduce render-blocking CSS
   },
   vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
     build: {
       minify: 'terser', // Use Terser for more aggressive minification
       terserOptions: {
