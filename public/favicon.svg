@@ -1,13 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="55" height="55"><svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55" fill="none">
-  <g transform="translate(0, 9)"> <!-- Shift down to center in the square -->
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M22.0538 0.250122L0.687988 36.422H11.3709L21.8664 18.4298L32.5493 36.422H43.2322L37.9844 27.4259L22.0538 0.250122Z" fill="rgb(227,77,10)"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M43.2321 36.422L48.6673 27.4259L43.607 18.4297L37.9844 27.6133L43.2321 36.422Z" opacity="5" fill="rgb(227,77,10)" fill-opacity="0.8"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M32.9243 0.250122L43.4198 0.250122L54.1027 18.6172L48.6675 27.4259L32.9243 0.250122Z" fill="rgb(227,77,10)"></path>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="55" height="55"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 600.000000 600.000000" preserveAspectRatio="xMidYMid meet">
+  <g transform="translate(0.000000,600.000000) scale(0.100000,-0.100000)" fill="#e34d0a" stroke="none">
+    <path d="M2647 4518 c-42 -69 -296 -479 -493 -798 -50 -80 -152 -246 -228 -370 -77 -124 -149 -241 -161 -260 -13 -19 -81 -129 -153 -245 -71 -115 -182 -295 -247 -400 -65 -104 -229 -370 -365 -590 -135 -220 -253 -410 -260 -422 -8 -12 -12 -24 -9 -27 2 -3 169 -6 369 -8 l365 -3 90 135 c50 74 141 213 204 308 l113 172 629 0 c346 0 629 4 629 8 0 5 -24 49 -53 98 -72 120 -169 285 -247 421 l-65 112 -272 1 c-149 0 -274 3 -277 8 -2 4 80 156 182 338 103 182 210 372 237 422 28 50 55 92 62 92 6 0 22 -19 35 -42 14 -24 134 -234 268 -468 134 -234 310 -540 390 -680 81 -140 197 -343 260 -450 62 -107 148 -256 190 -330 l77 -135 372 -3 c204 -1 371 1 371 4 0 3 -22 43 -49 88 -51 85 -285 496 -515 903 -75 133 -136 246 -136 252 0 8 83 11 264 11 l264 0 33 58 c17 31 60 107 94 167 34 61 101 178 148 260 l86 150 -668 3 c-621 2 -669 3 -683 20 -9 9 -89 136 -178 282 -142 232 -498 807 -582 943 -17 26 -34 47 -38 47 -5 0 -29 -33 -53 -72z"></path>
+    <path d="M3056 4552 c-3 -5 17 -42 43 -83 27 -41 164 -261 306 -489 141 -228 264 -422 271 -430 12 -12 14 13 14 173 l0 187 616 2 616 3 77 135 c233 407 280 494 275 501 -7 11 -2211 12 -2218 1z"></path>
   </g>
-  <style>
-    @media (prefers-color-scheme: light) { :root { filter: none; } }
-    @media (prefers-color-scheme: dark) { :root { filter: none; } }
-  </style>
 </svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
 @media (prefers-color-scheme: dark) { :root { filter: none; } }
 </style></svg>
