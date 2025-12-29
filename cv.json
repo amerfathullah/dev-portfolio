@@ -117,9 +117,9 @@
   ],
   "volunteer": [
     {
-      "organization": "Amer Tech Solutions",
+      "organization": "AFDev",
       "position": "CEO",
-      "url": "https://amertechsolutions.amerfathullah.com",
+      "url": "https://dev.amerfathullah.com",
       "startDate": "2024-08-17",
       "endDate": null,
       "summary": "I'm the boss. I run the show.",
@@ -532,15 +532,15 @@
       "github": "https://github.com/amerfathullah/dev-portfolio"
     },
     {
-      "name": "Company Landing Page",
+      "name": "My Freelance Landing Page",
       "isActive": true,
-      "description": "A website that displays services provided by my company.",
+      "description": "A website that displays services provided by my freelancing job.",
       "highlights": [
         "Responsive company site built with Astro",
         "Ensuring seamless display across devices"
       ],
-      "url": "https://amertechsolutions.amerfathullah.com",
-      "github": "https://github.com/amerfathullah/amertechsolutions"
+      "url": "https://dev.amerfathullah.com",
+      "github": "https://github.com/amerfathullah/dev"
     },
     {
       "name": "Enterprise Resource Planning",
