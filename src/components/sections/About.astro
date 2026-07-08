@@ -3,10 +3,17 @@ import Section from "../Section.astro";
 
 import { basics } from "@cv";
 const { summary } = basics;
+
+const startDate = new Date("2021-01-01");
+const now = new Date();
+const yearsOfExperience = Math.floor(
+	(now.getTime() - startDate.getTime()) / (365.25 * 24 * 60 * 60 * 1000)
+);
+const dynamicSummary = summary.replace(/\d+\+?\s*years?\s*of\s*experience/, `${yearsOfExperience}+ years of experience`);
 ---
 
 <Section title="About">
 	<p>
-		{summary}
+		{dynamicSummary}
 	</p>
 </Section>
