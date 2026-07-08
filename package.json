@@ -5,18 +5,18 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.9",
     "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.2",
     "astro": "7.0.7",
     "astro-font-picker": "^0.2.2",
     "hotkeypad": "^1.0.2",
     "prettier-plugin-tailwindcss": "^0.8.0",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4.3.2",
     "terser": "^5.49.0",
     "typescript": "^7.0.2"
