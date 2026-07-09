@@ -18,7 +18,7 @@ import { work } from "@cv";
           location,
           location_type,
         }) => {
-          const formatDate = (date: string) => new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+          const formatDate = (date: string) => new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
           const startFormatted = formatDate(startDate);
           const endFormatted = endDate != null ? formatDate(endDate) : "Present";
 
