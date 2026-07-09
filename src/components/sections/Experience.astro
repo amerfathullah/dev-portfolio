@@ -18,22 +18,23 @@ import { work } from "@cv";
           location,
           location_type,
         }) => {
-          const startYear = new Date(startDate).getFullYear();
-          const endYear =
-            endDate != null ? new Date(endDate).getFullYear() : "Present";
+          const formatDate = (date: string) => new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+          const startFormatted = formatDate(startDate);
+          const endFormatted = endDate != null ? formatDate(endDate) : "Present";
 
           return (
-            <li class="relative print:py-2">
-              <div class="group relative grid pb-1 transition-all sm:grid-cols-12 sm:gap-8 md:gap-6 lg:hover:opacity-100! print:grid-cols-1 print:gap-1 print:pb-0">
-                <header class="relative mt-1 text-xs font-semibold sm:col-span-2">
-                  <time datetime={startDate}>{startYear}</time> -{" "}
-                  <time datetime={endDate}>{endYear}</time>
+              <li class="relative print:py-1">
+              <div class="group relative grid pb-1 transition-all sm:grid-cols-12 sm:gap-8 md:gap-6 lg:hover:opacity-100! print:block print:pb-0">
+                <header class="relative mt-1 text-xs font-semibold sm:col-span-2 print:hidden">
+                  <time datetime={startDate}>{startFormatted} -</time>
+                  <br />
+                  <time datetime={endDate}>{endFormatted}</time>
                 </header>
                 <div class="before:bg-skin-fill-muted relative flex flex-col pb-6 before:absolute before:mt-2 before:-ml-6 before:h-full before:w-px sm:col-span-10 print:pb-0 print:before:hidden">
                   <div class="bg-skin-fill-muted ring-skin-fill absolute mt-2 h-2 w-2 -translate-x-[1.71rem] rounded-full ring-3 print:hidden" />
 
                   <h3>
-                    <div class="group/link inline-flex items-center text-lg leading-tight print:text-base">
+                      <div class="group/link inline-flex items-center text-lg leading-tight print:text-[10pt] print:font-bold print:text-[#414141]">
                       <span>
                         {position} <span>@</span>{" "}
                         {url ? (
@@ -68,8 +69,13 @@ import { work } from "@cv";
                     </div>
                   </h3>
 
+                  <div class="hidden print:flex print:items-center print:justify-between print:text-[8pt] print:text-[#999]">
+                    <span class="print:italic print:text-[#DC3522]">{location}</span>
+                    <span class="print:italic">{startFormatted} - {endFormatted}</span>
+                  </div>
+
                   {(location || location_type) && (
-                    <div class="text-skin-muted text-xs">
+                    <div class="text-skin-muted text-xs print:hidden">
                       {location} {location && location_type && "-"}{" "}
                       {location_type}
                     </div>
@@ -77,11 +83,11 @@ import { work } from "@cv";
 
                   {/* Responsibilities */}
                   {responsibilities && (
-                    <div class="mt-4 flex flex-col gap-1 text-sm print:gap-0 print:text-xs">
-                      <span class="text-skin-base font-medium">
+                    <div class="mt-4 flex flex-col gap-1 text-sm print:mt-1 print:gap-0 print:text-[9pt]">
+                      <span class="text-skin-base font-medium print:hidden">
                         Responsibilities:
                       </span>
-                      <ul class="text-skin-muted flex list-disc flex-col gap-2 [&>li]:ml-4">
+                      <ul class="text-skin-muted flex list-disc flex-col gap-2 print:gap-0 [&>li]:ml-4 print:[&>li]:ml-3 print:text-[#333]">
                         {responsibilities.map((responsibility) => (
                           <>
                             <li>{responsibility}</li>

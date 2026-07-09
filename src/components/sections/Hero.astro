@@ -27,15 +27,15 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 ---
 
 <Section>
-	<div class="flex flex-col-reverse gap-8">
-		<div class="info">
+	<div class="flex flex-col-reverse gap-8 print:flex-col print:items-center print:gap-0 print:text-center">
+		<div class="info print:flex print:flex-col print:items-center">
 			<h1>{name}</h1>
 			<h2>{label}</h2>
-			<div class="text-skin-muted flex items-center gap-2 pt-2 text-sm">
+			<div class="text-skin-muted flex items-center gap-2 pt-2 text-sm print:hidden">
 				<WorldMap />
 				{city}, {region}
 			</div>
-			<footer class="print">
+			<footer class="print print:mt-1 print:text-[8pt] print:text-[#5D5D5D]">
 				{printInfo}
 			</footer>
 			<footer class="no-print">
