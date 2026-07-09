@@ -8,7 +8,7 @@ import { certificates } from "@cv";
 <Section className={Astro.props.className} title="Education">
 	<ul class="space-y-4 py-3 print:space-y-0 print:py-0">
 		{
-			education.map(({ institution, startDate, endDate, area, url }) => {
+			education.map(({ institution, startDate, endDate, area, studyType, score, url }) => {
 				const formatDate = (date: string) => new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
 				const startFormatted = formatDate(startDate);
 				const endFormatted = endDate != null ? formatDate(endDate) : "Present";
@@ -33,22 +33,27 @@ import { certificates } from "@cv";
 								<path d="M22 10v6" />
 								<path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
 							</svg>
-							<div class="relative w-full items-baseline justify-between gap-2 print:flex print:items-baseline print:gap-2">
-								<h3 class="mr-6 items-baseline gap-x-2 gap-y-0.5 font-medium print:mr-0 print:shrink-0 print:text-[10pt] print:font-normal print:text-[#333]">
-									<a
-										target="_blank"
-										class="hover:text-skin-hue group flex items-center gap-[6px] decoration-dotted underline-offset-[5px] hover:underline"
-										href={url}
-									>
-										{institution}
-									</a>
-								</h3>
-								<div class="text-skin-muted text-sm print:text-[8pt]">
-									{area}
+							<div class="relative w-full items-baseline justify-between gap-2 print:flex print:flex-col print:gap-0">
+								<div class="print:flex print:w-full print:items-baseline print:justify-between">
+									<h3 class="mr-6 items-baseline gap-x-2 gap-y-0.5 font-medium print:mr-0 print:shrink-0 print:text-[10pt] print:font-bold print:text-[#414141]">
+										<a
+											target="_blank"
+											class="hover:text-skin-hue group flex items-center gap-[6px] decoration-dotted underline-offset-[5px] hover:underline"
+											href={url}
+										>
+											{studyType ? `${studyType} in ${area}` : area}
+										</a>
+									</h3>
+									<time class="text-skin-muted top-0 right-0 text-xs md:absolute md:block print:static print:ml-auto print:shrink-0 print:text-[8pt] print:italic print:text-[#999]">
+										{years}
+									</time>
 								</div>
-								<time class="text-skin-muted top-0 right-0 text-xs md:absolute md:block print:static print:ml-auto print:shrink-0 print:text-[8pt]">
-									{years}
-								</time>
+								<div class="print:flex print:w-full print:items-baseline print:justify-between">
+									<div class="text-skin-muted text-sm print:text-[9pt] print:italic print:text-[#DC3522]">
+										{institution}
+									</div>
+									{score && <span class="hidden print:inline print:ml-auto print:text-[8pt] print:text-[#5D5D5D]">CGPA: {score}</span>}
+								</div>
 							</div>
 						</div>
 					</li>
@@ -94,7 +99,7 @@ import { certificates } from "@cv";
 												{name}
 											</a>
 										</h3>
-										<div class="text-skin-muted text-sm print:text-[8pt]">
+										<div class="text-skin-muted text-sm print:text-[8pt] print:italic print:text-[#DC3522]">
 											{issuer}
 										</div>
 										<time class="text-skin-muted top-0 right-0 text-xs md:absolute md:block print:static print:ml-auto print:shrink-0 print:text-[8pt]">

@@ -77,9 +77,19 @@
     color: #5D5D5D !important;
   }
 
+  p.print-accent {
+    color: #DC3522 !important;
+    font-style: italic !important;
+  }
+
   ul {
     margin: 0 !important;
     padding: 0 !important;
+  }
+
+  ul.print-bullets {
+    list-style-type: disc !important;
+    padding-left: 1.2em !important;
   }
 
   li {

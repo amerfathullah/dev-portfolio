@@ -87,7 +87,7 @@ import { work } from "@cv";
                       <span class="text-skin-base font-medium print:hidden">
                         Responsibilities:
                       </span>
-                      <ul class="text-skin-muted flex list-disc flex-col gap-2 print:gap-0 [&>li]:ml-4 print:[&>li]:ml-3 print:text-[#333]">
+                      <ul class="print-bullets text-skin-muted flex list-disc flex-col gap-2 print:gap-0 [&>li]:ml-4 print:[&>li]:ml-3 print:text-[#333]">
                         {responsibilities.map((responsibility) => (
                           <>
                             <li>{responsibility}</li>
@@ -100,12 +100,13 @@ import { work } from "@cv";
                   {/* Skills */}
                   {skills && (
                     <ul
-                      class="mt-4 flex flex-wrap gap-2 print:hidden"
+                      class="mt-4 flex flex-wrap gap-2 print:mt-1 print:gap-0"
                       aria-label="Technologies used"
                     >
-                      {skills.map((skill) => (
-                        <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue flex items-center gap-1 rounded-md border px-2 py-0.5 text-xs print:bg-transparent print:text-zinc-800">
-                          <span>{skill}</span>
+                      <span class="hidden print:inline print:text-[8pt] print:font-semibold print:text-[#414141]">Tech / Skills:&nbsp;</span>
+                      {skills.map((skill, index) => (
+                        <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue flex items-center gap-1 rounded-md border px-2 py-0.5 text-xs print:rounded-none print:border-none print:bg-transparent print:px-0 print:py-0 print:text-[8pt] print:text-[#5D5D5D]">
+                          <span>{skill}{index < skills.length - 1 && <span class="hidden print:inline">,&nbsp;</span>}</span>
                         </li>
                       ))}
                     </ul>

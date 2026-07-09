@@ -1,13 +1,13 @@
 {
   "basics": {
     "name": "Amer Fathullah",
-    "label": "Full-Stack Developer",
+    "label": "Full-Stack Software Engineer | DevOps Engineer",
     "image": "/me_avatar.avif",
     "email": "me@amerfathullah.com",
     "twitterSite": "AmerFathullah",
     "phone": "+60105752992",
     "url": "https://www.amerfathullah.com",
-    "summary": "Full-Stack Developer with 5+ years of experience designing, developing, and deploying scalable web applications using Angular, .NET, and PostgreSQL. Skilled in end-to-end application development, REST APIs, cloud deployment (Docker/Kubernetes), and performance optimization. Adept at collaborating with cross-functional teams in Agile/Scrum environments to deliver high-quality solutions. Passionate about problem-solving, clean code, and driving measurable business impact.",
+    "summary": "Full-Stack Software Engineer with 5+ years of experience building, deploying, and operating enterprise web, mobile, ERP, fintech, and AI-enabled systems. Strong hands-on experience across Angular, TypeScript, ASP.NET Core/.NET, ASP.NET Boilerplate, ABP Zero, Entity Framework Core, Microsoft SQL Server, Redis, Docker, Kubernetes, Linode, Datadog, Bitbucket Pipelines, Flutter, Firebase, Python, TensorFlow, and PyTorch. Comfortable owning the full software lifecycle across frontend, backend, database, DevOps, CI/CD, observability, production support, and cloud infrastructure. Uses AI-assisted engineering workflows with GitHub Copilot, custom copilot-instructions.md, MCP servers, and Google Antigravity for personal projects.",
     "theme": "default",
     "location": {
       "address": "",
@@ -38,19 +38,49 @@
       "url": "https://www.tfxislamic.com",
       "startDate": "2022-06-01",
       "endDate": null,
+      "summary": "Owns full-stack development, DevOps, CI/CD, database, cloud infrastructure, and production observability for enterprise ERP and supply chain financing platforms.",
       "responsibilities": [
-        "Built and maintained Angular/.NET web applications supporting enterprise resource planning (ERP) and supply chain financing platforms.",
-        "Optimized frontend and backend code, reducing page load times by 30% and enhancing user experience.",
-        "Designed and deployed REST APIs, ensuring secure and scalable system integration with partner platforms.",
-        "Contributed to CI/CD pipelines with Docker and Kubernetes, streamlining deployments and reducing release cycles.",
-        "Collaborated in Agile sprints, participating in peer code reviews and improving coding standards across the team."
+        "Built and maintained multi-tenant ERP and supply chain financing platforms using Angular, TypeScript, ASP.NET Core/.NET, ASP.NET Boilerplate, ABP Zero, Entity Framework Core, Microsoft SQL Server, and Redis caching.",
+        "Delivered business modules across inventory, purchasing, sales, HR, payroll, finance, manufacturing, reporting, dashboards, warehouse, cashbooks, ESG, asset register, project management, tax reporting, import/export, quotations, tender box, approvals, delivery order, POS, and marketplace workflows.",
+        "Developed procurement and payable workflows including purchase requisition, purchase order, vendor invoices, goods received note, debit note, credit note, petty cash, employee claims, and approval routing.",
+        "Implemented accounting and finance capabilities including chart of accounts, journal entries, general ledger, profit and loss, balance sheet, cash flow, financial reports, management reports, auditing, budgeting, bank reconciliation, and consolidated ledger across multi-tenant structures.",
+        "Built advanced financial consolidation and investment features including goodwill, minority interest, intra-group elimination, asset disposal, long-term investment, short-term investment, equity investment, and disposal of investment.",
+        "Developed inventory, warehouse, and manufacturing features including inventory transfer between locations, transfer from factory, write-off, stock count, project issue note, production report, sales quotation, purchasing quotation, and delivery order workflows.",
+        "Integrated Malaysian LHDN e-Invoice functionality and payment gateway workflows using Billplz and HitPay.",
+        "Designed, maintained, extended, and improved Bitbucket Pipelines CI/CD from scratch for Development, Staging, and Production environments.",
+        "Deployed applications to Kubernetes and administered Kubernetes clusters, including workload deployment, environment configuration, infrastructure troubleshooting, and operational support.",
+        "Supported cloud infrastructure on Linode after a migration from AWS, with ongoing preparation for future Alibaba Cloud migration planning.",
+        "Implemented Datadog monitoring for Kubernetes workloads in under one week, improving visibility into cluster health, application behavior, infrastructure metrics, and production issues.",
+        "Used GitHub Copilot, custom copilot-instructions.md, agentic AI workflows, and MCP server integration to improve coding productivity, consistency, and development workflow quality.",
+        "Worked across frontend, backend, database, DevOps, CI/CD, monitoring, and production support responsibilities in Agile/Scrum delivery environments."
       ],
       "skills": [
-        ".NET",
         "Angular",
+        "TypeScript",
+        "Angular Material",
+        "NgRx Signal Store",
+        "C#",
+        ".NET",
+        "ASP.NET Core",
+        "ASP.NET Boilerplate",
+        "ABP Zero",
+        "Entity Framework Core",
+        "Microsoft SQL Server",
+        "Redis",
+        "REST APIs",
         "Docker",
         "Kubernetes",
-        "PostgreSQL"
+        "Linode",
+        "AWS",
+        "Alibaba Cloud",
+        "Bitbucket Pipelines",
+        "CI/CD",
+        "Datadog",
+        "Grafana",
+        "Linux",
+        "GitHub Copilot",
+        "MCP Server",
+        "Agentic AI"
       ]
     },
     {
@@ -61,17 +91,22 @@
       "url": "https://cefs-response.com.my",
       "startDate": "2022-03-01",
       "endDate": "2022-05-31",
+      "summary": "Built internal mobile automation tools while supporting technical review, vendor coordination, and safety operations.",
       "responsibilities": [
-        "Developed automation apps using Flutter and Firebase, saving the team 20+ hours per month in manual processes.",
-        "Negotiated vendor contracts, improving cost efficiency and ensuring timely delivery of equipment.",
-        "Conducted technical reviews and contributed to workplace safety by participating in industrial firefighting training."
+        "Developed cross-platform mobile applications for Android and iOS using Flutter, Dart, and Firebase.",
+        "Built automation apps that reduced manual operational processes by 20+ hours per month.",
+        "Supported technical reviews, documentation, stakeholder communication, and vendor coordination.",
+        "Contributed to workplace safety and emergency response readiness through industrial firefighting training."
       ],
       "skills": [
+        "Flutter",
         "Dart",
         "Firebase",
-        "Firefighting",
-        "Fire Safety",
-        "Flutter"
+        "Android",
+        "iOS",
+        "Mobile App Development",
+        "Technical Documentation",
+        "Vendor Coordination"
       ]
     },
     {
@@ -81,18 +116,28 @@
       "location": "Georgetown, Penang, Malaysia",
       "startDate": "2021-01-01",
       "endDate": "2021-12-31",
+      "summary": "Worked on AI, computer vision, dashboard, and enterprise monitoring solutions using frontend and machine learning technologies.",
       "responsibilities": [
-        "Developed the frontend of an AI-based monitoring system analyzing hundreds of hours of video feeds, improving security response times.",
-        "Built COVID-19 Vpass dashboards used by enterprises to monitor health status of 500+ employees, reducing reporting overhead.",
+        "Developed frontend interfaces and dashboards for AI-based monitoring systems analyzing video feeds and operational data.",
+        "Built COVID-19 VPass dashboards used by enterprises to monitor employee health status and reduce reporting overhead.",
+        "Worked with Python, TensorFlow, PyTorch, React, React Native, PostgreSQL, Java, and Node.js for AI, dashboard, and application development tasks.",
         "Researched reinforcement learning algorithms for traffic light optimization, achieving up to 25% reduction in simulated congestion.",
-        "Mentored junior developers in AI-GET program, fostering technical knowledge sharing."
+        "Mentored junior developers in the AI-GET program and supported technical knowledge sharing."
       ],
       "skills": [
-        "Github",
-        "Java",
         "Python",
-        "React.js",
-        "Node.js"
+        "TensorFlow",
+        "PyTorch",
+        "React",
+        "React Native",
+        "PostgreSQL",
+        "Java",
+        "Node.js",
+        "Computer Vision",
+        "Reinforcement Learning",
+        "AI",
+        "Machine Learning",
+        "GitHub"
       ]
     },
     {
@@ -102,29 +147,34 @@
       "location": "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
       "startDate": "2019-06-01",
       "endDate": "2019-08-31",
+      "summary": "Supported internal system development, testing, and customer service engineering tasks.",
       "responsibilities": [
-        "Supported development of an inventory management system in PHP/MySQL, enabling tracking of product repair history across departments.",
-        "Assisted with system testing and debugging, improving platform stability for daily operations."
+        "Supported development of an inventory management system in PHP and MySQL, enabling tracking of product repair history across departments.",
+        "Assisted with system testing, debugging, and documentation to improve stability for daily operations."
       ],
       "skills": [
-        "CSS",
-        "HTML",
-        "MySQL",
         "PHP",
-        "XAMPP"
+        "MySQL",
+        "HTML",
+        "CSS",
+        "XAMPP",
+        "Testing",
+        "Debugging"
       ]
     }
   ],
   "volunteer": [
     {
-      "organization": "AFDev",
-      "position": "CEO",
+      "organization": "AF Tech",
+      "position": "Founder & Full-Stack Developer",
       "url": "https://dev.amerfathullah.com",
       "startDate": "2024-08-17",
       "endDate": null,
-      "summary": "I'm the boss. I run the show.",
+      "summary": "Launched an independent freelance service brand and public landing page for web and mobile development services. No client delivery claimed yet.",
       "highlights": [
-        "Awarded 'CEO of the Year' for outstanding leadership and innovation in the tech industry."
+        "Built the AF Tech service website using Astro, Tailwind CSS, and Sanity CMS concepts for a modern, responsive, SEO-friendly web presence.",
+        "Defined service offerings for landing pages, business websites, web applications, CMS integration, Flutter mobile apps, Android/iOS development, and maintenance work.",
+        "Uses AI-assisted design and development workflows to accelerate ideation, prototyping, and implementation."
       ]
     }
   ],
@@ -137,8 +187,7 @@
       "startDate": "2016-07-01",
       "endDate": "2020-08-31",
       "score": "3.44",
-      "courses": [
-      ]
+      "courses": []
     },
     {
       "institution": "Centre for Foundation Studies, International Islamic University of Malaysia",
@@ -148,8 +197,7 @@
       "startDate": "2015-05-01",
       "endDate": "2016-06-30",
       "score": "3.164",
-      "courses": [
-      ]
+      "courses": []
     },
     {
       "institution": "SM Imtiaz YT Kuala Berang",
@@ -159,8 +207,7 @@
       "startDate": "2010-01-01",
       "endDate": "2014-12-31",
       "score": "11A",
-      "courses": [
-      ]
+      "courses": []
     }
   ],
   "certificates": [
@@ -197,170 +244,154 @@
   ],
   "skills": [
     {
-      "name": ".NET",
+      "name": "Programming Languages",
       "level": "Strong",
       "keywords": [
-        "Web Development",
-        "Backend",
-        "Server",
-        "Web API"
-      ]
-    },
-    {
-      "name": "Angular",
-      "level": "Strong",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "React Framework",
-        "SSR",
-        "Static Generation"
-      ]
-    },
-    {
-      "name": "PostgreSQL",
-      "level": "Strong",
-      "keywords": [
-        "Databases",
-        "SQL",
-        "Data Storage",
-        "Backend"
-      ]
-    },
-    {
-      "name": "CSS",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Responsive Design"
-      ]
-    },
-    {
-      "name": "Git",
-      "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code"
-      ]
-    },
-    {
-      "name": "GitHub",
-      "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code",
-        "Git"
-      ]
-    },
-    {
-      "name": "HTML",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend"
-      ]
-    },
-    {
-      "name": "JavaScript",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Backend",
-        "Fullstack"
-      ]
-    },
-    {
-      "name": "Node",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Backend",
+        "C#",
+        "TypeScript",
         "JavaScript",
-        "Server"
+        "Python",
+        "Java",
+        "Dart",
+        "SQL",
+        "PHP",
+        "HTML5",
+        "CSS3"
       ]
     },
     {
-      "name": "TypeScript",
+      "name": "Frontend Development",
+      "level": "Strong",
+      "keywords": [
+        "Angular",
+        "Angular Material",
+        "NgRx Signal Store",
+        "React",
+        "React Native",
+        "Astro",
+        "Tailwind CSS",
+        "Responsive Design",
+        "SPA",
+        "SSR",
+        "Static Site Generation"
+      ]
+    },
+    {
+      "name": "Backend Development",
+      "level": "Strong",
+      "keywords": [
+        "ASP.NET Core",
+        ".NET",
+        "ASP.NET Boilerplate",
+        "ABP Zero",
+        "ABP Framework",
+        "abp.io",
+        "Entity Framework Core",
+        "REST API",
+        "Node.js",
+        "Authentication",
+        "Authorization",
+        "Multi-Tenancy"
+      ]
+    },
+    {
+      "name": "Database & Caching",
+      "level": "Strong",
+      "keywords": [
+        "Microsoft SQL Server",
+        "PostgreSQL",
+        "Redis",
+        "Firebase",
+        "MySQL",
+        "Database Design",
+        "Query Optimization",
+        "Entity Framework Core",
+        "SQL"
+      ]
+    },
+    {
+      "name": "DevOps, Cloud & Observability",
+      "level": "Strong",
+      "keywords": [
+        "Docker",
+        "Docker Compose",
+        "Kubernetes",
+        "Linode",
+        "AWS",
+        "Alibaba Cloud",
+        "Bitbucket Pipelines",
+        "CI/CD",
+        "Linux",
+        "Datadog",
+        "Grafana",
+        "Cluster Administration",
+        "Multi-Environment Deployment"
+      ]
+    },
+    {
+      "name": "Mobile Development",
       "level": "Intermediate",
       "keywords": [
-        "Web Development",
-        "Frontend",
-        "Backend",
-        "JavaScript Superset"
-      ]
-    },
-    {
-      "name": "Astro",
-      "level": "Beginner",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "JavaScript Library",
-        "UI"
-      ]
-    },
-    {
-      "name": "Docker",
-      "level": "Beginner",
-      "keywords": [
-        "Containerization",
-        "DevOps",
-        "Virtualization",
-        "Deployment"
-      ]
-    },
-    {
-      "name": "Kubernetes",
-      "level": "Beginner",
-      "keywords": [
-        "Container Orchestration",
-        "DevOps",
-        "Cloud Native",
-        "Deployment"
-      ]
-    },
-    {
-      "name": "Firebase",
-      "level": "Beginner",
-      "keywords": [
-        "Web Development",
-        "Backend",
-        "Server",
-        "Database"
-      ]
-    },
-    {
-      "name": "Flutter",
-      "level": "Beginner",
-      "keywords": [
-        "Mobile Development",
-        "Cross-Platform",
+        "Flutter",
         "Dart",
-        "UI Framework"
+        "Firebase",
+        "Android",
+        "iOS",
+        "Cross-Platform Mobile Apps"
       ]
     },
     {
-      "name": "PHP",
-      "level": "Beginner",
+      "name": "AI, ML & AI-Assisted Development",
+      "level": "Intermediate",
       "keywords": [
-        "Web Development",
-        "Backend",
-        "Server",
-        "Web API"
+        "Python",
+        "TensorFlow",
+        "PyTorch",
+        "Computer Vision",
+        "Reinforcement Learning",
+        "GitHub Copilot",
+        "copilot-instructions.md",
+        "MCP Server",
+        "Agentic AI",
+        "Google Antigravity"
       ]
     },
     {
-      "name": "Tailwind",
-      "level": "Beginner",
+      "name": "Enterprise & Domain Knowledge",
+      "level": "Strong",
       "keywords": [
-        "Web Development",
-        "Frontend",
-        "CSS Framework",
-        "Responsive Design"
+        "ERP",
+        "Supply Chain Financing",
+        "Fintech",
+        "Accounting Systems",
+        "Inventory Management",
+        "Procurement",
+        "Payroll",
+        "HR",
+        "Manufacturing",
+        "Warehouse Management",
+        "Tax Reporting",
+        "LHDN e-Invoice",
+        "POS",
+        "Marketplace",
+        "Multi-Tenant SaaS"
+      ]
+    },
+    {
+      "name": "Self-Hosting & Homelab",
+      "level": "Intermediate",
+      "keywords": [
+        "Linux",
+        "Jellyfin",
+        "Immich",
+        "Docker",
+        "Docker Compose",
+        "Reverse Proxy",
+        "Nginx",
+        "Grafana",
+        "Monitoring",
+        "Media Server",
+        "Photo Management"
       ]
     }
   ],
@@ -376,193 +407,138 @@
   ],
   "interests": [
     {
-      "name": "Technology",
-      "keywords": [
-        "AI",
-        "Blockchain",
-        "Web Development",
-        "Software Engineering",
-        "Cloud Computing",
-        "Cybersecurity",
-        "Data Science",
-        "Machine Learning",
-        "DevOps",
-        "Agile Development",
-        "Open Source",
-        "Mobile Development",
-        "Game Development",
-        "UI/UX Design",
-        "Virtual Reality",
-        "Augmented Reality",
-        "Internet of Things",
-        "Quantum Computing",
-        "5G Technology",
-        "Wearable Technology",
-        "Digital Marketing",
-        "E-commerce",
-        "Social Media",
-        "Content Creation",
-        "SEO",
-        "Data Analytics",
-        "Big Data",
-        "Business Intelligence"
-      ]
-    },
-    {
-      "name": "Anime",
-      "keywords": [
-        "Attack on Titan",
-        "Death Note",
-        "Naruto",
-        "One Piece",
-        "My Hero Academia",
-        "Demon Slayer",
-        "Sword Art Online",
-        "Fullmetal Alchemist",
-        "Dragon Ball Z",
-        "Tokyo Ghoul",
-        "Hunter x Hunter"
-      ]
-    },
-    {
-      "name": "Self-hosting",
+      "name": "Self-Hosting & Homelab",
       "keywords": [
         "Linux",
-        "Ubuntu",
-        "Debian",
-        "CentOS",
-        "Arch Linux",
-        "Proxmox VE",
-        "VMware ESXi",
-        "VirtualBox",
-        "KVM",
-        "QEMU",
-        "LXC",
         "Docker",
-        "Docker Compose",
-        "Podman",
-        "Kubernetes",
-        "Helm",
-        "NAS",
-        "ZFS",
-        "TrueNAS",
-        "FreeNAS",
-        "NFS",
-        "Samba",
-        "RAID",
-        "Reverse Proxy",
-        "Nginx",
-        "Traefik",
-        "HAProxy",
-        "WireGuard",
-        "OpenVPN",
-        "UFW",
-        "iptables",
-        "CI/CD",
-        "Ansible",
-        "Terraform",
-        "Prometheus",
-        "Grafana",
-        "Portainer",
-        "Nextcloud",
         "Jellyfin",
-        "Plex",
-        "Emby",
-        "Pi-hole",
-        "AdGuard Home",
-        "Home Assistant",
-        "Gitea",
-        "GitLab",
-        "WordPress"
+        "Immich",
+        "Grafana",
+        "Reverse Proxy",
+        "Home Server",
+        "Automation"
       ]
     },
     {
-      "name": "Retro Gaming",
+      "name": "AI-Assisted Software Engineering",
+      "keywords": [
+        "GitHub Copilot",
+        "MCP Server",
+        "Agentic AI",
+        "Google Antigravity",
+        "Developer Productivity"
+      ]
+    },
+    {
+      "name": "Retro Gaming & Tooling",
       "keywords": [
         "Batocera",
-        "EmulationStation",
-        "Knulli",
-        "GarlicOS",
-        "RetroArch",
-        "Lakka",
-        "Recalbox",
-        "MAME",
+        "RetroBat",
         "FinalBurn Neo",
-        "PCSX2",
-        "DuckStation",
-        "PPSSPP",
-        "Yuzu",
-        "Ryujinx",
-        "Citra",
-        "Dolphin Emulator",
-        "Flycast",
-        "Redream",
-        "RPCS3",
-        "Xenia",
-        "Cemu",
-        "OpenEmu",
-        "LaunchBox",
-        "RetroPie",
-        "MiSTer FPGA",
         "ROM Management",
-        "BIOS Files",
-        "Shader Presets",
-        "CRT Shaders",
-        "Bezels",
-        "Scraping Metadata",
-        "Controller Mapping"
+        "Python Tooling"
       ]
     }
   ],
   "references": [
     {
-      "name": "Nikjey",
-      "reference": "Reference…"
+      "name": "Available upon request",
+      "reference": "Professional references available upon request."
     }
   ],
   "projects": [
     {
-      "name": "Personal Portfolio",
-      "isActive": false,
-      "description": "A personal portfolio website to showcase my projects and skills.",
+      "name": "Enterprise Resource Planning Platform",
+      "isActive": true,
+      "description": "Enterprise multi-tenant ERP platform supporting core business operations across finance, procurement, inventory, HR, payroll, manufacturing, warehouse, tax, reporting, and project workflows.",
       "highlights": [
-        "Designed portfolio site with Astro & Tailwind CSS, showcasing projects and technical skills."
+        "Built with Angular, TypeScript, ASP.NET Core/.NET, ASP.NET Boilerplate, ABP Zero, Entity Framework Core, Microsoft SQL Server, Redis, Docker, Kubernetes, and Bitbucket Pipelines.",
+        "Implemented ERP modules including inventory, purchasing, sales, HR, payroll, finance, manufacturing, reporting, dashboards, warehouse, cashbooks, ESG, asset register, project management, tax reporting, import/export, and approvals.",
+        "Developed accounting features including chart of accounts, journal entries, general ledger, profit and loss, balance sheet, cash flow, financial reports, management reports, auditing, budgeting, bank reconciliation, and multi-tenant consolidated ledger.",
+        "Implemented operational workflows including sales quotation, purchase quotation, tender box, delivery order, POS, marketplace, goods received note, debit note, credit note, purchase requisition, purchase order, vendor invoices, petty cash, and employee claims.",
+        "Implemented advanced inventory and production workflows including inventory transfer, transfer from factory, write-off, stock count, project issue note, production report, asset disposal, investments, and disposal of investment.",
+        "Integrated LHDN e-Invoice and payment gateway flows using Billplz and HitPay.",
+        "Supported Dev, Staging, and Production deployments with Docker, Kubernetes, Linode, Datadog, and custom Bitbucket Pipelines CI/CD."
       ],
-      "url": "https://www.amerfathullah.com",
-      "github": "https://github.com/amerfathullah/dev-portfolio"
+      "url": "https://app.tfxflow.com"
     },
     {
-      "name": "My Freelance Landing Page",
+      "name": "Supply Chain Financing Platform",
       "isActive": true,
-      "description": "A website that displays services provided by my freelancing job.",
+      "description": "Fintech platform helping businesses improve liquidity and optimize working capital through supply chain financing workflows.",
       "highlights": [
-        "Responsive company site built with Astro",
-        "Ensuring seamless display across devices"
+        "Built with Angular, TypeScript, ASP.NET Core/.NET, ASP.NET Boilerplate, ABP Zero, Entity Framework Core, Microsoft SQL Server, Docker, and Kubernetes.",
+        "Developed secure REST API integrations and enterprise workflows connected with the ERP platform.",
+        "Supported authentication, authorization, multi-tenant data handling, financial workflows, and production deployment processes."
+      ],
+      "url": "https://app.tfxislamic.com"
+    },
+    {
+      "name": "MyERP",
+      "isActive": true,
+      "description": "Personal ERP project and latest active software engineering project focused on building a modern ERP platform using ABP Framework and full-stack enterprise patterns.",
+      "highlights": [
+        "Built with ABP Framework (abp.io), .NET/C#, TypeScript, HTML, SCSS, JavaScript, and Docker Compose.",
+        "Uses personal-project experience with ABP Framework to complement professional ASP.NET Boilerplate and ABP Zero experience at TFX.",
+        "Explores modular ERP architecture, multi-tenancy concepts, backend APIs, frontend integration, and development automation."
+      ],
+      "url": "https://github.com/amerfathullah/MyERP",
+      "github": "https://github.com/amerfathullah/MyERP"
+    },
+    {
+      "name": "AF Tech Freelance Service Website",
+      "isActive": true,
+      "description": "Public freelance service website for web development, mobile app development, CMS integration, and maintenance offerings.",
+      "highlights": [
+        "Built with Astro, Tailwind CSS, and Sanity CMS concepts for a responsive, SEO-friendly service website.",
+        "Defines service offerings for landing pages, business websites, e-commerce solutions, web applications, CMS integration, Flutter mobile apps, Android/iOS apps, and ongoing maintenance.",
+        "Uses AI-assisted design and implementation workflows for rapid prototyping and service positioning."
       ],
       "url": "https://dev.amerfathullah.com",
       "github": "https://github.com/amerfathullah/dev"
     },
     {
-      "name": "Enterprise Resource Planning",
+      "name": "Personal Portfolio",
       "isActive": true,
-      "description": "A website that helps organisations streamline their core business processes.",
+      "description": "Print-friendly portfolio and CV website configurable through JSON.",
       "highlights": [
-        "Built with Angular, .NET, and PostgreSQL",
-        "User authentication and CRUD operations",
-        "Connected with the supply chain financing system"
+        "Built with Astro, TypeScript, Tailwind CSS, and JSON-based content configuration.",
+        "Designed to showcase professional experience, skills, certificates, projects, and contact details in a fast, static portfolio."
       ],
-      "url": "https://app.tfxflow.com"
+      "url": "https://www.amerfathullah.com",
+      "github": "https://github.com/amerfathullah/dev-portfolio"
     },
     {
-      "name": "Supply Chain Financing",
+      "name": "Neko Money Manager",
       "isActive": true,
-      "description": "A financial solution that helps businesses in a supply chain by improving liquidity and optimizing working capital.",
+      "description": "Personal finance and money management mobile application project.",
       "highlights": [
-        "Built with Angular, .NET, and PostgreSQL",
-        "Enabled businesses to optimize liquidity and working capital",
-        "Connected with the enterprise resource planning system"
+        "Built primarily with Flutter/Dart with multi-platform project structure for Android, iOS, Linux, macOS, web, and Windows.",
+        "Demonstrates mobile UI development, local app architecture, cross-platform Flutter project setup, and personal finance domain experimentation."
       ],
-      "url": "https://app.tfxislamic.com"
+      "url": "https://github.com/amerfathullah/neko-money-manager",
+      "github": "https://github.com/amerfathullah/neko-money-manager"
+    },
+    {
+      "name": "FBNeo 1G1R DAT Filter",
+      "isActive": true,
+      "description": "Python utility that filters FinalBurn Neo and Logiqx XML DAT files to produce a clean 1 Game 1 Region ROM set.",
+      "highlights": [
+        "Built a Python script for ROM management automation, XML parsing, region prioritization, clone filtering, and clean dataset generation.",
+        "Demonstrates practical scripting, data filtering, automation, CLI-style tooling, and retro-gaming domain problem solving."
+      ],
+      "url": "https://github.com/amerfathullah/fbneo-1g1r-dat-filter",
+      "github": "https://github.com/amerfathullah/fbneo-1g1r-dat-filter"
+    },
+    {
+      "name": "Self-Hosted Homelab",
+      "isActive": true,
+      "description": "Personal self-hosting environment for media, photo management, and infrastructure learning.",
+      "highlights": [
+        "Self-hosts Jellyfin and Immich using Linux and containerized infrastructure concepts.",
+        "Applies Docker, Docker Compose, Linux administration, service monitoring, reverse proxy concepts, and Grafana-style observability practices.",
+        "Uses homelab experience to strengthen practical DevOps, networking, storage, backup, and operations skills."
+      ]
     }
   ]
 }

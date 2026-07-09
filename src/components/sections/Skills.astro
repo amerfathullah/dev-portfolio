@@ -57,19 +57,31 @@ const SKILLS_ICONS: Record<string, any> = {
 ---
 
 <Section className={Astro.props.className} title="Skills">
-	<ul class="[&>li>svg]:text-skin-hue inline-flex flex-wrap gap-6 print:gap-0 [&>li>svg]:size-5 [&>li]:text-sm print:[&>li>svg]:hidden">
+	{/* Web view: icon badges */}
+	<ul class="[&>li>svg]:text-skin-hue inline-flex flex-wrap gap-6 print:hidden [&>li>svg]:size-5 [&>li]:text-sm">
 		{
-			skills.map(({ name }, index) => {
+			skills.map(({ name }) => {
 				const iconName = name === "Next.js" ? "Next" : name === ".NET" ? "Dotnet" : name === "Astro" ? "AstroIcon" : name;
 				const Icon = SKILLS_ICONS[iconName];
-				const isLast = index === skills.length - 1;
 
 				return (
-					<li class="border-skin-hue/20s bg-skin-button-accent/20s borders border-solids flex items-center gap-1 rounded-md px-2 py-0.5 text-xs text-skin-muted print:border-none print:bg-transparent print:px-0 print:py-0 print:text-[10pt] print:text-zinc-800">
-						{Icon && <Icon />} <span>{name}{!isLast && <span class="hidden print:inline">,&nbsp;</span>}</span>
+					<li class="border-skin-hue/20s bg-skin-button-accent/20s borders border-solids flex items-center gap-1 rounded-md px-2 py-0.5 text-xs text-skin-muted">
+						{Icon && <Icon />} <span>{name}</span>
 					</li>
 				);
 			})
+		}
+	</ul>
+
+	{/* Print view: ATS-friendly categorized keyword list */}
+	<ul class="hidden print:block print:space-y-0">
+		{
+			skills.map(({ name, keywords }) => (
+				<li class="print:py-[1px]">
+					<span class="print:text-[9pt] print:font-semibold print:text-[#414141]">{name}:&nbsp;</span>
+					<span class="print:text-[9pt] print:text-[#333]">{keywords.join(", ")}</span>
+				</li>
+			))
 		}
 	</ul>
 </Section>
