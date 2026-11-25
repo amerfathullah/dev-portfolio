@@ -51,9 +51,10 @@
     --color-primary-active: #a9583e;
 
     /* DESIGN.md — typography (Copernicus/StyreneB substitutes) */
-    --font-display: "Cormorant Garamond", "Tiempos Headline", "EB Garamond", Garamond, "Times New Roman", serif;
-    --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    /* --font-inter / --font-cormorant / --font-jetbrains come from Astro's Fonts API (astro.config.mjs) */
+    --font-display: var(--font-cormorant);
+    --font-sans: var(--font-inter);
+    --font-mono: var(--font-jetbrains);
   }
 
 /* display-* tokens: serif, regular weight, negative tracking.

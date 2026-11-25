@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config'
+import { defineConfig, fontProviders } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
 import sitemap from '@astrojs/sitemap';
 import { fileURLToPath } from 'url';
@@ -12,7 +12,7 @@ export default defineConfig({
   // Enables HTML minification
   compressHTML: true,
   build: {
-    inlineStylesheets: 'auto' // Helps reduce render-blocking CSS
+    inlineStylesheets: 'always' // Single-page site: inline all CSS so nothing blocks first render
   },
   vite: {
     resolve: {
@@ -31,5 +31,33 @@ export default defineConfig({
     },
     plugins: [tailwindcss()],
   },
-  integrations: [sitemap()]
+  integrations: [sitemap()],
+  // Self-hosted at build time (no third-party round trips, size-adjusted fallbacks to avoid CLS)
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: 'Inter',
+      cssVariable: '--font-inter',
+      weights: [400, 500, 600],
+      subsets: ['latin'],
+      fallbacks: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+    },
+    {
+      provider: fontProviders.google(),
+      name: 'Cormorant Garamond',
+      cssVariable: '--font-cormorant',
+      weights: [500, 600],
+      subsets: ['latin'],
+      fallbacks: ['Garamond', 'Times New Roman', 'serif'],
+    },
+    {
+      provider: fontProviders.google(),
+      name: 'JetBrains Mono',
+      cssVariable: '--font-jetbrains',
+      weights: [400],
+      styles: ['normal'],
+      subsets: ['latin'],
+      fallbacks: ['ui-monospace', 'monospace'],
+    },
+  ],
 });

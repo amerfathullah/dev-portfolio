@@ -126,7 +126,11 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" â€
 			<Image
 				src={image}
 				alt={name}
+				width={128}
+				height={128}
+				densities={[1, 2]}
 				loading="eager"
+				fetchpriority="high"
 			/>
 			<div class="pointer-events-none absolute -inset-2">
 				<div

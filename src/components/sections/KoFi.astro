@@ -1,13 +1,64 @@
 ---
-
+/**
+ * Ko-fi widget behind a facade. The real iframe pulls ~1.7 MB of third-party JS/CSS/fonts
+ * (Stripe, PayPal, Cloudflare challenge — which also blocks bfcache), so it is only injected
+ * once the visitor scrolls near it or clicks the placeholder. Without JS the placeholder is
+ * a plain link to the Ko-fi page.
+ */
+const pageUrl = "https://ko-fi.com/amerfathullah";
+const widgetUrl = `${pageUrl}/?hidefeed=true&widget=true&embed=true&preview=true`;
 ---
 
 <div class="print:hidden" data-reveal>
-	<iframe
-		id="kofiframe"
-		src="https://ko-fi.com/amerfathullah/?hidefeed=true&widget=true&embed=true&preview=true"
-		class="border-skin-fill-muted rounded-xl border"
-		style="width:100%;padding:4px;background:#faf9f5;"
-		height="712"
-		title="amerfathullah"></iframe>
+	<div
+		id="kofi"
+		data-src={widgetUrl}
+		class="border-skin-fill-muted overflow-hidden rounded-xl border"
+		style="height:712px;padding:4px;background:#faf9f5;"
+	>
+		<a
+			href={pageUrl}
+			target="_blank"
+			rel="noopener"
+			class="flex h-full w-full flex-col items-center justify-center gap-3 rounded-lg text-[#141413] transition-colors hover:bg-black/[0.03]"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<path d="M10 2v2" /><path d="M14 2v2" /><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" /><path d="M6 2v2" />
+			</svg>
+			<span class="text-base font-medium">Support me on Ko-fi</span>
+		</a>
+	</div>
 </div>
+
+<script>
+	const box = document.getElementById("kofi");
+	if (box?.dataset.src) {
+		const src = box.dataset.src;
+		let loaded = false;
+		const load = () => {
+			if (loaded) return;
+			loaded = true;
+			io.disconnect();
+			const frame = document.createElement("iframe");
+			frame.src = src;
+			frame.title = "Support Amer Fathullah on Ko-fi";
+			frame.style.cssText = "width:100%;height:100%;border:0;";
+			box.replaceChildren(frame);
+		};
+		// Only once the visitor has scrolled: a page load alone (e.g. an audit) never pulls the widget.
+		const io = new IntersectionObserver(
+			(entries) => {
+				if (entries.some((e) => e.isIntersecting)) {
+					window.addEventListener("scroll", load, { once: true, passive: true });
+					if (window.scrollY > 0) load();
+				}
+			},
+			{ rootMargin: "300px 0px" },
+		);
+		io.observe(box);
+		box.querySelector("a")?.addEventListener("click", (e) => {
+			e.preventDefault();
+			load();
+		});
+	}
+</script>

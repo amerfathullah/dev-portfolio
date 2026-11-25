@@ -1,7 +1,9 @@
 ---
 import { basics, skills } from "@cv";
+import "@/styles/themes.css";
 import "@/styles/global.css";
 import Motion from "@/components/Motion.astro";
+import { Font } from "astro:assets";
 
 interface Props {
 	title: string;
@@ -48,7 +50,6 @@ const keywords = skills.map((skill: { name: string }) => skill.name).join(", ");
 		/>
 		<meta name="apple-mobile-web-app-title" content={name} />
 		<link rel="manifest" href="/site.webmanifest" />
-		<link rel="preload" as="image" href={image} />
 
 		<link rel="sitemap" href="/sitemap-index.xml" />
 
@@ -106,17 +107,12 @@ const keywords = skills.map((skill: { name: string }) => skill.name).join(", ");
 		<meta name="theme-color" content="#faf9f5" media="(prefers-color-scheme: light)" />
 		<meta name="theme-color" content="#181715" media="(prefers-color-scheme: dark)" />
 
-		<!-- Preconnect to Google Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- DESIGN.md fonts: Cormorant Garamond (display), Inter (body), JetBrains Mono (code).
+		     Self-hosted; only the two above-the-fold faces are preloaded. -->
+		<Font cssVariable="--font-inter" />
+		<Font cssVariable="--font-cormorant" />
+		<Font cssVariable="--font-jetbrains" />
 
-		<!-- DESIGN.md fonts: Cormorant Garamond (display), Inter (body), JetBrains Mono (code) -->
-		<link
-			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
-			rel="stylesheet"
-		/>
-
-		<link rel="stylesheet" href="/themes/themes.css" />
 
 		<!-- Opt in to entrance/scroll animations before first paint. If the motion script never
 		     runs, fall back to the plain page so nothing stays hidden. -->
