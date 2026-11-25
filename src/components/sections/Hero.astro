@@ -36,7 +36,33 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" â€
 ---
 
 <Section>
-	<div class="flex flex-col-reverse gap-8 print:flex-col print:items-center print:gap-0 print:text-center">
+	<div class="flex flex-col gap-8 print:flex-col print:items-center print:gap-0 print:text-center">
+		<!-- Avatar first in source order, not placed visually with flex-col-reverse: Chrome paints the
+		     partly-parsed HTML on slow connections, and a figure arriving after .info pushed it down
+		     160px (CLS). The avatar data also parses earlier, so it can paint with the first frame. -->
+		<figure class="relative w-fit print:hidden" data-tilt="12">
+			<div class="avatar">
+				<img src={avatarSrc} alt={name} width="128" height="128" />
+			</div>
+			<div class="pointer-events-none absolute -inset-2">
+				<div
+					class="hero-line hero-line-y bg-skin-fill-muted absolute -inset-y-8 right-0 w-px mask-[linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
+				>
+				</div>
+				<div
+					class="hero-line hero-line-y bg-skin-fill-muted absolute -inset-y-8 left-0 w-px mask-[linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
+				>
+				</div>
+				<div
+					class="hero-line hero-line-x bg-skin-fill-muted absolute -inset-x-8 bottom-0 h-px mask-[linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
+				>
+				</div>
+				<div
+					class="hero-line hero-line-x bg-skin-fill-muted absolute -inset-x-8 top-0 h-px mask-[linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
+				>
+				</div>
+			</div>
+		</figure>
 		<div class="info print:flex print:flex-col print:items-center">
 			<h1 class="display">
 				{
@@ -128,27 +154,6 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" â€
 				</div>
 			</footer>
 		</div>
-		<figure class="relative w-fit print:hidden" data-tilt="12">
-			<img src={avatarSrc} alt={name} width="128" height="128" />
-			<div class="pointer-events-none absolute -inset-2">
-				<div
-					class="hero-line hero-line-y bg-skin-fill-muted absolute -inset-y-8 right-0 w-px mask-[linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
-				>
-				</div>
-				<div
-					class="hero-line hero-line-y bg-skin-fill-muted absolute -inset-y-8 left-0 w-px mask-[linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
-				>
-				</div>
-				<div
-					class="hero-line hero-line-x bg-skin-fill-muted absolute -inset-x-8 bottom-0 h-px mask-[linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
-				>
-				</div>
-				<div
-					class="hero-line hero-line-x bg-skin-fill-muted absolute -inset-x-8 top-0 h-px mask-[linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
-				>
-				</div>
-			</div>
-		</figure>
 	</div>
 </Section>
 
@@ -168,8 +173,14 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" â€
 		@apply text-skin-muted text-base font-normal text-balance print:text-lg print:font-medium;
 	}
 
+	/* Block-level so the figure's height is exactly the image's: an inline img sits on the text
+	   line box, whose height depends on font metrics and shifted .info (CLS) as fonts settled. */
+	.avatar {
+		@apply block size-32 overflow-hidden rounded-2xl;
+	}
+
 	img {
-		@apply aspect-square w-32 rounded-2xl bg-cover;
+		@apply block aspect-square w-32 rounded-2xl bg-cover;
 	}
 
 	span {
@@ -187,10 +198,6 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" â€
 	}
 
 	@media (width <= 700px) {
-		.container {
-			flex-direction: column-reverse;
-		}
-
 		.info {
 			@apply pr-0 md:items-center md:justify-center;
 		}
@@ -238,10 +245,12 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" â€
 			transform: translateY(0.5rem) scale(0.6);
 		}
 	}
+	/* The avatar can be the LCP element, so it is never transparent: an element is not counted as
+	   painted while its opacity is 0, which held LCP back for the whole fade. It zooms out to rest
+	   inside the clipped .avatar box instead. */
 	@keyframes hero-avatar-in {
 		from {
-			opacity: 0;
-			transform: scale(1.12);
+			transform: scale(1.18);
 		}
 	}
 	@keyframes hero-line-y {
@@ -280,7 +289,7 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" â€
 		footer.no-print > :nth-child(7) { --n: 6; }
 		footer.no-print > :nth-child(8) { --n: 7; }
 
-		:global(html.motion) figure :global(img) {
+		:global(html.motion) .avatar img {
 			animation: hero-avatar-in 1200ms var(--ease-out-expo) 100ms backwards;
 		}
 		:global(html.motion) .hero-line-y {
