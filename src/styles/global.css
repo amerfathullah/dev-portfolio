@@ -31,6 +31,7 @@
     --color-skin-button-muted: rgb(var(--color-button-muted));
 
     --color-skin-hue: rgb(var(--color));
+    --color-skin-link: rgb(var(--color-link));
     --color-skin-fill-muted: rgb(var(--muted));
 
     /* DESIGN.md — fixed surface tokens (do not change with light/dark) */

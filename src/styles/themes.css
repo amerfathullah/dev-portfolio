@@ -10,6 +10,7 @@
     --muted              → hairline       #e6dfd8
     --color              → primary        #cc785c
     --color-button-accent-hover → primary-active #a9583e
+    --color-link         → primary-active #a9583e (light) — coral text on cream is 3.1:1, below WCAG AA
     --color-button-muted → surface-card   #efe9de
   */
   :root {
@@ -22,7 +23,9 @@
     --color-button-accent: 204, 120, 92;
     --color-button-accent-hover: 169, 88, 62;
     --color-button-muted: 239, 233, 222;
+    --color-link: 169, 88, 62;
     [data-theme="blue"] {
+      --color-link: var(--color);
       --color-text-base: 15, 23, 42;
       --color-text-muted: 100, 116, 139;
       --color-text-inverted: 240, 240, 240;
@@ -34,6 +37,7 @@
       --color-button-muted: 226, 232, 240;
     }
     [data-theme="red"] {
+      --color-link: var(--color);
       --color-text-base: 28, 25, 23;
       --color-text-muted: 100, 100, 100;
       --color-text-inverted: 245, 245, 245;
@@ -45,6 +49,7 @@
       --color-button-muted: 245, 245, 245;
     }
     [data-theme="green"] {
+      --color-link: var(--color);
       --color-text-base: 40, 40, 40;
       --color-text-muted: 110, 110, 110;
       --color-text-inverted: 230, 230, 230;
@@ -56,6 +61,7 @@
       --color-button-muted: 211, 235, 173;
     }
     [data-theme="cyber"] {
+      --color-link: var(--color);
       --color-text-base: 15, 15, 15;
       --color-text-muted: 144, 135, 5;
       --color-text-inverted: 240, 240, 240;
@@ -83,7 +89,9 @@
     --color-button-accent: 204, 120, 92;
     --color-button-accent-hover: 169, 88, 62;
     --color-button-muted: 37, 35, 32;
+    --color-link: 204, 120, 92;
     [data-theme="blue"] {
+      --color-link: var(--color);
       --color-text-base: 248, 250, 252;
       --color-text-muted: 148, 163, 184;
       --color-text-inverted: 240, 240, 240;
@@ -95,6 +103,7 @@
       --color-button-muted: 30, 41, 59;
     }
     [data-theme="red"] {
+      --color-link: var(--color);
       --color-text-base: 231, 229, 228;
       --color-text-muted: 168, 162, 158;
       --color-text-inverted: 245, 245, 245;
@@ -106,6 +115,7 @@
       --color-button-muted: 120, 113, 108; 
     }
     [data-theme="green"] {
+      --color-link: var(--color);
       --color-text-base: 230, 230, 230;
       --color-text-muted: 104, 124, 104;
       --color-text-inverted: 230, 230, 230;
@@ -117,6 +127,7 @@
       --color-button-muted: 34, 44, 34;
     }
     [data-theme="cyber"] {
+      --color-link: var(--color);
       --color-text-base: 252, 255, 64;
       --color-text-muted: 125, 125, 125;
       --color-text-inverted: 240, 240, 240;
