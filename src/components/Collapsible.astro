@@ -1,0 +1,290 @@
+---
+/**
+ * Clamps its content to a uniform height and adds a "Show more" toggle when the content overflows.
+ *
+ * mode="max":   the body is capped at `height`; shorter content keeps its natural height.
+ * mode="fixed": the whole root is exactly `height` (uniform cards); the body fills what the header leaves.
+ * slack:        px of overflow tolerated before clamping — avoids a toggle that would reveal only a line or two.
+ *               In "fixed" mode overflow is always clamped, so the cards stay uniform.
+ *
+ * Without JS (and on paper) nothing is clamped: the clamp only applies once the script sets data-clamped.
+ */
+interface Props {
+	height: string;
+	mode?: "max" | "fixed";
+	slack?: number;
+	label?: string;
+	class?: string;
+	bodyClass?: string;
+	role?: astroHTML.JSX.AriaRole;
+	/** Passed through to the root, e.g. data-reveal */
+	[data: `data-${string}`]: string | boolean | undefined;
+}
+
+const { height, mode = "max", slack = 0, label, class: className, bodyClass, role, ...attrs } = Astro.props;
+const bodyId = `collapsible-${Math.random().toString(36).slice(2, 10)}`;
+---
+
+<div
+	class:list={["collapsible", className]}
+	role={role}
+	data-collapsible
+	data-mode={mode}
+	data-slack={slack}
+	style={`--collapsed-h: ${height}`}
+	{...attrs}
+>
+	<slot name="header" />
+	<div id={bodyId} class:list={["collapsible-body", bodyClass]} data-collapsible-body>
+		<slot />
+	</div>
+	<button
+		type="button"
+		class="collapsible-toggle text-skin-hue mt-3 items-center gap-1 self-start text-sm font-medium decoration-dotted underline-offset-4 hover:underline print:hidden"
+		aria-expanded="false"
+		aria-controls={bodyId}
+		data-collapsible-toggle
+	>
+		<span data-collapsible-label>Show more</span>
+		{label && <span class="sr-only">about {label}</span>}
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 20 20"
+			fill="currentColor"
+			aria-hidden="true"
+			class="collapsible-chevron size-4 transition-transform"
+		>
+			<path
+				fill-rule="evenodd"
+				d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+				clip-rule="evenodd"></path>
+		</svg>
+	</button>
+</div>
+
+<style>
+	.collapsible[data-mode="fixed"] {
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* max: cap the body */
+	.collapsible[data-mode="max"][data-clamped] > .collapsible-body {
+		max-height: var(--collapsed-h);
+		overflow: hidden;
+	}
+
+	/* fixed: the root is the uniform box, the body takes the remaining space */
+	.collapsible[data-mode="fixed"][data-clamped] {
+		height: var(--collapsed-h);
+	}
+	.collapsible[data-mode="fixed"][data-clamped] > .collapsible-body {
+		flex: 1 1 0;
+		min-height: 0;
+		overflow: hidden;
+	}
+
+	/* Fade the cut-off edge; a mask works on any background (canvas or card).
+	   --fade is a registered length so it can transition: the fade melts away while expanding. */
+	@property --fade {
+		syntax: "<length>";
+		inherits: false;
+		initial-value: 0px;
+	}
+	.collapsible[data-overflow] > .collapsible-body {
+		--fade: 0px;
+		mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade)), transparent);
+		transition: --fade 450ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	.collapsible[data-clamped][data-overflow] > .collapsible-body {
+		--fade: 3.5rem;
+	}
+
+	.collapsible-toggle {
+		display: none;
+	}
+	.collapsible[data-overflow] > .collapsible-toggle {
+		display: inline-flex;
+	}
+	.collapsible-chevron {
+		transition-duration: 450ms;
+		transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); /* slight overshoot */
+	}
+	.collapsible[data-expanded] .collapsible-chevron {
+		transform: rotate(180deg);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.collapsible-body,
+		.collapsible-chevron {
+			transition: none !important;
+		}
+	}
+
+	@media print {
+		.collapsible[data-clamped] {
+			height: auto !important;
+		}
+		.collapsible[data-clamped] > .collapsible-body {
+			max-height: none !important;
+			overflow: visible !important;
+			mask-image: none !important;
+		}
+		.collapsible-toggle {
+			display: none !important;
+		}
+	}
+</style>
+
+<script>
+	const roots = document.querySelectorAll<HTMLElement>("[data-collapsible]");
+	const lastWidth = new WeakMap<HTMLElement, number>();
+
+	function measure(root: HTMLElement) {
+		if (root.hasAttribute("data-expanded")) return;
+		const body = root.querySelector<HTMLElement>(":scope > [data-collapsible-body]")!;
+		const slack = Number(root.dataset.slack) || 0;
+
+		// Measure with the clamp on and the toggle hidden, so the result doesn't depend on the previous state.
+		root.setAttribute("data-clamped", "");
+		root.removeAttribute("data-overflow");
+		const overflow = body.scrollHeight - body.clientHeight;
+
+		if (overflow > slack) {
+			root.setAttribute("data-overflow", "");
+		} else if (overflow > 0) {
+			// Only a sliver would be hidden: show it all instead of a toggle.
+			root.removeAttribute("data-clamped");
+		}
+	}
+
+	const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+	const EASE_OPEN = "cubic-bezier(0.22, 1, 0.36, 1)"; // fast start, long soft landing
+	const EASE_CLOSE = "cubic-bezier(0.65, 0, 0.35, 1)"; // smooth in-out so the fold feels deliberate
+	const running = new WeakMap<HTMLElement, Animation[]>();
+
+	// The element whose height carries the clamp: the body in "max" mode, the whole card in "fixed" mode.
+	const sizer = (root: HTMLElement) =>
+		root.dataset.mode === "fixed" ? root : root.querySelector<HTMLElement>(":scope > [data-collapsible-body]")!;
+
+	// Longer travel gets a bit more time, within limits.
+	const durationFor = (distance: number) => Math.min(750, Math.max(320, 260 + distance * 0.3));
+
+	// Leaf-ish content that starts below `cutoff` px from the top of the body.
+	function itemsBelow(root: HTMLElement, cutoff: number) {
+		const body = root.querySelector<HTMLElement>(":scope > [data-collapsible-body]")!;
+		const top = body.getBoundingClientRect().top;
+		return [...body.querySelectorAll<HTMLElement>("li, p")].filter(
+			(el) => el.getBoundingClientRect().top - top > cutoff,
+		);
+	}
+
+	function setExpanded(root: HTMLElement, expanded: boolean) {
+		const toggle = root.querySelector<HTMLButtonElement>(":scope > [data-collapsible-toggle]")!;
+		const label = toggle.querySelector<HTMLElement>("[data-collapsible-label]")!;
+		const el = sizer(root);
+		const animate = !reducedMotion.matches;
+
+		// Start from wherever we are, even mid-animation, so a quick re-click reverses smoothly.
+		const from = el.getBoundingClientRect().height;
+		running.get(root)?.forEach((a) => a.cancel());
+
+		toggle.setAttribute("aria-expanded", String(expanded));
+		label.textContent = expanded ? "Show less" : "Show more";
+
+		if (expanded) {
+			const clampedAt = root.querySelector<HTMLElement>(":scope > [data-collapsible-body]")!.clientHeight;
+			root.setAttribute("data-expanded", "");
+			root.removeAttribute("data-clamped");
+			if (!animate) return;
+
+			const to = el.getBoundingClientRect().height;
+			const duration = durationFor(to - from);
+			const anims = [
+				el.animate(
+					[
+						{ height: `${from}px`, overflow: "hidden" },
+						{ height: `${to}px`, overflow: "hidden" },
+					],
+					{ duration, easing: EASE_OPEN },
+				),
+				// Revealed lines rise out of a soft blur, one after another (starting with those that were under the fade).
+				...itemsBelow(root, clampedAt - 40).map((item, i) =>
+					item.animate(
+						[
+							{ opacity: 0, transform: "translateY(10px)", filter: "blur(3px)" },
+							{ opacity: 1, transform: "none", filter: "none" },
+						],
+						{ duration: 420, delay: 90 + Math.min(i * 45, 450), easing: EASE_OPEN, fill: "backwards" },
+					),
+				),
+			];
+			running.set(root, anims);
+		} else {
+			root.removeAttribute("data-expanded");
+			measure(root);
+			const to = el.getBoundingClientRect().height;
+
+			// Collapsing a long item can leave the reader far below it; glide its top back into view.
+			const top = root.getBoundingClientRect().top;
+			if (top < 0) window.scrollBy({ top: top - 24, behavior: animate ? "smooth" : "auto" });
+			if (!animate) return;
+
+			const duration = durationFor(from - to);
+			const body = root.querySelector<HTMLElement>(":scope > [data-collapsible-body]")!;
+			const anims = [
+				// maxHeight: none lifts the CSS cap ("max" mode) for the duration, so the height can travel.
+				el.animate(
+					[
+						{ height: `${from}px`, maxHeight: "none", overflow: "hidden" },
+						{ height: `${to}px`, maxHeight: "none", overflow: "hidden" },
+					],
+					{ duration, easing: EASE_CLOSE },
+				),
+				// Lines that will end up hidden fade and sink first, so the fold swallows them gently.
+				...itemsBelow(root, body.clientHeight - 8).map((item) =>
+					item.animate(
+						[
+							{ opacity: 1, transform: "none" },
+							{ opacity: 0, transform: "translateY(6px)" },
+						],
+						{ duration: duration * 0.55, easing: "ease-in", fill: "forwards" },
+					),
+				),
+			];
+			// Hidden items stay faded until the height finishes, then reset for the next expand.
+			anims[0].finished.then(() => anims.slice(1).forEach((a) => a.cancel())).catch(() => {});
+			running.set(root, anims);
+		}
+
+		if (animate) {
+			label.animate(
+				[
+					{ opacity: 0, transform: `translateY(${expanded ? 4 : -4}px)` },
+					{ opacity: 1, transform: "none" },
+				],
+				{ duration: 220, easing: EASE_OPEN },
+			);
+		}
+	}
+
+	const observer = new ResizeObserver((entries) => {
+		for (const { target, contentRect } of entries) {
+			const root = target as HTMLElement;
+			// Re-measure only when the width changes; our own clamping changes height and would loop.
+			if (lastWidth.get(root) === contentRect.width) continue;
+			lastWidth.set(root, contentRect.width);
+			measure(root);
+		}
+	});
+
+	roots.forEach((root) => {
+		root.querySelector(":scope > [data-collapsible-toggle]")!.addEventListener("click", () => {
+			setExpanded(root, !root.hasAttribute("data-expanded"));
+		});
+		observer.observe(root);
+	});
+
+	// Web fonts can change line wrapping after first layout.
+	document.fonts?.ready.then(() => roots.forEach(measure));
+</script>

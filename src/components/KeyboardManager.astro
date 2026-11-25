@@ -72,7 +72,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		height="32"
 		viewBox="0 0 24 24"
 		stroke-width="1.5"
-		stroke="#777"
+		stroke="currentColor"
 		fill="none"
 		stroke-linecap="round"
 		stroke-linejoin="round"
@@ -176,10 +176,10 @@ const profilesInfo = profiles.map(({ network, url }) => {
 			display: none;
 		}
 
+		/* button-icon-circular */
 		.footer-button {
-			background: #fff;
+			@apply bg-skin-fill text-skin-base border-skin-fill-muted border;
 			position: fixed;
-			border: 1px solid #eee;
 			right: 10px;
 			bottom: 10px;
 			width: 50px;
@@ -192,14 +192,20 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		}
 	}
 
+	/* Small floating hint — same theme-aware surface as the content cards */
 	footer {
-		@apply bg-skin-button-accent;
+		@apply bg-skin-button-muted text-skin-base border-skin-fill-muted border;
 		position: fixed;
-		bottom: 0px;
-		width: 100%;
-		padding-block: 8px;
+		bottom: 16px;
+		left: 50%;
+		translate: -50% 0;
+		width: max-content;
+		padding: 10px 16px;
+		border-radius: 12px;
 		text-align: center;
-		font-size: 0.85rem;
+		font-size: 13px;
+		font-weight: 500;
+		z-index: 10;
 
 		view-timeline-name: --revealing;
 		view-timeline-axis: block;
@@ -209,9 +215,9 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		animation-range: entry 100% cover 10%;
 	}
 	kbd {
-		@apply bg-skin-fill-muted;
+		@apply bg-skin-fill text-skin-base border-skin-fill-muted border font-mono;
 		border-radius: 4px;
-		padding: 2px 4px;
+		padding: 2px 6px;
 		font-size: 12px;
 	}
 	#hotkeypad {

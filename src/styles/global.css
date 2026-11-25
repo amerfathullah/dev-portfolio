@@ -32,53 +32,132 @@
 
     --color-skin-hue: rgb(var(--color));
     --color-skin-fill-muted: rgb(var(--muted));
+
+    /* DESIGN.md — fixed surface tokens (do not change with light/dark) */
+    --color-surface-dark: #181715;
+    --color-surface-dark-elevated: #252320;
+    --color-surface-dark-soft: #1f1e1b;
+    --color-on-dark: #faf9f5;
+    --color-on-dark-soft: #a09d96;
+    --color-muted-soft: #8e8b82;
+
+    /* DESIGN.md — fixed light-surface tokens, used for print (paper is always light) */
+    --color-ink: #141413;
+    --color-body-strong: #252523;
+    --color-body: #3d3d3a;
+    --color-muted: #6c6a64;
+    --color-hairline: #e6dfd8;
+    --color-primary: #cc785c;
+    --color-primary-active: #a9583e;
+
+    /* DESIGN.md — typography (Copernicus/StyreneB substitutes) */
+    --font-display: "Cormorant Garamond", "Tiempos Headline", "EB Garamond", Garamond, "Times New Roman", serif;
+    --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
   }
 
+/* display-* tokens: serif, regular weight, negative tracking.
+   Unlayered so it wins over the global h1–h4 sans rule in Layout.astro.
+   Screen-only so the print/ATS résumé styling stays untouched. */
+@media screen {
+  .display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+}
+
+@layer components {
+  /* badge-pill */
+  .badge-pill {
+    @apply bg-skin-button-muted text-skin-base inline-flex items-center gap-1 rounded-full px-3 py-1 text-[13px] leading-[1.4] font-medium;
+  }
+
+  /* button-icon-circular */
+  .icon-button {
+    @apply border-skin-fill-muted bg-skin-fill text-skin-base hover:bg-skin-button-muted inline-flex size-9 items-center justify-center rounded-full border p-2 transition-colors;
+  }
+
+  /* text-input + text-input-focused */
+  .text-input {
+    @apply border-skin-fill-muted bg-skin-fill text-skin-base h-10 rounded-lg border px-3.5 text-sm outline-none;
+  }
+  .text-input:focus {
+    border-color: rgb(var(--color));
+    box-shadow: 0 0 0 3px rgb(var(--color) / 0.15);
+  }
+}
+
 @media print {
+  /* DESIGN.md applied to paper: Inter body, Cormorant display, ink/body/muted text, coral accents */
+
+  /* Paper is always light: pin theme text colors to ink / muted even when dark mode is active */
+  :root,
+  .dark {
+    --color-text-base: 20, 20, 19;
+    --color-text-muted: 108, 106, 100;
+    --color: 169, 88, 62;
+  }
+
   * {
-    line-height: 1.4 !important;
-    font-family: "Source Sans Pro", "Source Sans 3", Calibri, Arial, Helvetica, sans-serif !important;
+    line-height: 1.35 !important; /* Inter is wider than the old Source Sans; keeps the CV at 3 pages */
+    font-family: var(--font-sans) !important;
+  }
+
+  /* Command palette is injected after <main>; keep it off paper (it caused a trailing blank page) */
+  #hotkeypad {
+    display: none !important;
+  }
+
+  /* The cream canvas stops at the page margins on paper, so print on plain white */
+  html,
+  body {
+    background: transparent !important;
   }
 
   html {
-    font-size: 9pt !important;
-    color: #333 !important;
+    font-size: 8.5pt !important;
+    color: var(--color-body) !important;
+  }
+
+  /* display-* tokens: serif, weight 500 (Cormorant substitute), negative tracking, never bold */
+  .display {
+    font-family: var(--font-display) !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.1 !important;
+    color: var(--color-ink) !important;
   }
 
   h1 {
-    font-size: 28pt !important;
-    font-weight: 300 !important;
+    font-size: 30pt !important;
     margin: 0 !important;
-    color: #333 !important;
-    letter-spacing: -0.5px !important;
   }
 
-  h1 strong, h1 b {
-    font-weight: 700 !important;
-  }
-
+  /* label under the name: caption-uppercase in coral */
   h2 {
-    font-size: 9pt !important;
-    font-variant: small-caps !important;
-    letter-spacing: 1px !important;
-    color: #DC3522 !important;
+    font-size: 8pt !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    color: var(--color-primary-active) !important;
     margin: 0 !important;
   }
 
   h3 {
-    font-size: 11pt !important;
     padding-bottom: 0 !important;
     margin: 0 !important;
   }
 
   p {
-    font-size: 9pt !important;
+    font-size: 8.5pt !important;
     margin: 0 !important;
-    color: #5D5D5D !important;
+    color: var(--color-body) !important;
   }
 
   p.print-accent {
-    color: #DC3522 !important;
+    color: var(--color-primary-active) !important;
     font-style: italic !important;
   }
 
@@ -90,6 +169,10 @@
   ul.print-bullets {
     list-style-type: disc !important;
     padding-left: 1.2em !important;
+  }
+
+  ul.print-bullets li::marker {
+    color: var(--color-primary) !important;
   }
 
   li {

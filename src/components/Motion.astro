@@ -1,0 +1,368 @@
+---
+/**
+ * Site-wide motion layer.
+ *
+ * Markup hooks:
+ *   data-reveal[="rise"|"scale"]   fades/rises the element in the first time it scrolls into view.
+ *   data-reveal-stagger[="…"]      marks every child as data-reveal (with that variant).
+ *                                  Elements revealed in the same frame are staggered in DOM order.
+ *   data-reveal-delay="ms"         extra delay on top of the stagger.
+ *   .spotlight                     coral glow that follows the pointer (cards).
+ *   data-tilt[="deg"]              3D tilt toward the pointer.
+ *   data-magnetic                  children drift toward the pointer.
+ *   data-count-to="n"              counts up from 0 when first seen (SSR text already holds n).
+ *
+ * Hidden "before" states only exist under html.motion, which an inline <head> script adds
+ * when motion is allowed — so no-JS, reduced-motion and print always see the finished page.
+ */
+---
+
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<style is:global>
+	:root {
+		--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+		--ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+	}
+
+	/* ── Scroll progress (CSS scroll-driven; simply absent where unsupported) ── */
+	.scroll-progress {
+		display: none;
+	}
+	@keyframes scroll-progress {
+		to {
+			transform: scaleX(1);
+		}
+	}
+	@supports (animation-timeline: scroll()) {
+		@media screen and (prefers-reduced-motion: no-preference) {
+			.scroll-progress {
+				display: block;
+				position: fixed;
+				inset: 0 0 auto 0;
+				z-index: 40;
+				height: 2px;
+				pointer-events: none;
+				background: linear-gradient(90deg, rgba(var(--color), 0.35), rgb(var(--color)));
+				transform: scaleX(0);
+				transform-origin: 0 50%;
+				animation: scroll-progress linear both;
+				animation-timeline: scroll(root);
+			}
+		}
+	}
+
+	/* ── Scroll reveal ── */
+	@media screen and (prefers-reduced-motion: no-preference) {
+		html.motion [data-reveal] {
+			opacity: 0;
+			transform: translate3d(0, 1.25rem, 0);
+			filter: blur(5px);
+			transition:
+				opacity 700ms var(--ease-out-expo),
+				transform 900ms var(--ease-out-expo),
+				filter 700ms var(--ease-out-expo),
+				clip-path 900ms var(--ease-out-expo);
+			transition-delay: var(--reveal-delay, 0ms);
+		}
+		/* Headings: wipe down while rising */
+		html.motion [data-reveal="rise"] {
+			filter: none;
+			transform: translate3d(0, 0.35em, 0);
+			clip-path: inset(0 0 100% 0);
+		}
+		html.motion [data-reveal="scale"] {
+			filter: none;
+			transform: scale(0.85);
+		}
+		html.motion [data-reveal].is-visible {
+			opacity: 1;
+			transform: none;
+			filter: none;
+		}
+		html.motion [data-reveal="rise"].is-visible {
+			clip-path: inset(-0.3em);
+		}
+	}
+
+	/* ── Experience timeline ── */
+	@media screen and (prefers-reduced-motion: no-preference) {
+		/* The rail draws downward once its role is revealed */
+		html.motion .timeline-item .timeline-rail::before {
+			transform: scaleY(0);
+			transform-origin: top;
+			transition: transform 1400ms var(--ease-out-expo) calc(var(--reveal-delay, 0ms) + 250ms);
+		}
+		html.motion .timeline-item.is-visible .timeline-rail::before {
+			transform: scaleY(1);
+		}
+		html.motion .timeline-item:not(.is-visible) .timeline-dot {
+			transform: scale(0);
+		}
+	}
+	.timeline-dot {
+		transition:
+			transform 500ms var(--ease-spring),
+			background-color 300ms ease;
+	}
+	.timeline-item:hover .timeline-dot {
+		transform: scale(1.6);
+		background-color: rgb(var(--color));
+	}
+	/* Current role: coral dot with a slow sonar ring */
+	.timeline-dot[data-current] {
+		background-color: rgb(var(--color));
+	}
+	@keyframes sonar {
+		from {
+			transform: scale(1);
+			opacity: 0.55;
+		}
+		to {
+			transform: scale(3.4);
+			opacity: 0;
+		}
+	}
+	@media screen and (prefers-reduced-motion: no-preference) {
+		.timeline-dot[data-current]::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			background-color: rgb(var(--color));
+			animation: sonar 2.4s var(--ease-out-expo) infinite;
+		}
+	}
+
+	/* ── Spotlight cards ── */
+	@property --spot {
+		syntax: "<number>";
+		inherits: true;
+		initial-value: 0;
+	}
+	@media screen {
+		.spotlight {
+			background-image: radial-gradient(
+				26rem circle at var(--mx, 50%) var(--my, 0%),
+				rgba(var(--color), calc(var(--spot) * 0.13)),
+				transparent 65%
+			);
+			box-shadow:
+				0 0 0 1px rgba(var(--color), calc(var(--spot) * 0.3)),
+				0 24px 48px -28px rgba(var(--color), calc(var(--spot) * 0.55));
+			transition:
+				--spot 450ms ease,
+				translate 600ms var(--ease-out-expo);
+		}
+		.spotlight:hover,
+		.spotlight:focus-within {
+			--spot: 1;
+		}
+	}
+	@media screen and (prefers-reduced-motion: no-preference) and (hover: hover) {
+		.spotlight:hover {
+			translate: 0 -3px;
+		}
+	}
+
+	/* ── Skill pills ── */
+	@media screen and (prefers-reduced-motion: no-preference) {
+		html.motion .skill-group .skill-pill {
+			transition:
+				opacity 500ms var(--ease-out-expo),
+				transform 650ms var(--ease-spring);
+			transition-delay: calc(var(--reveal-delay, 0ms) + 150ms + var(--i, 0) * 35ms);
+		}
+		html.motion .skill-group:not(.is-visible) .skill-pill {
+			opacity: 0;
+			transform: scale(0.6);
+		}
+	}
+	.skill-pill {
+		transition-property: opacity, transform, translate, background-color;
+	}
+	@media (hover: hover) {
+		/* :root bumps specificity past the staggered entrance transition above */
+		:root .skill-group .skill-pill:hover {
+			background-color: rgba(var(--color), 0.14);
+			translate: 0 -2px;
+			transition:
+				translate 300ms var(--ease-spring),
+				background-color 200ms ease;
+		}
+	}
+	@keyframes icon-wiggle {
+		0%,
+		100% {
+			rotate: 0deg;
+		}
+		25% {
+			rotate: -14deg;
+			scale: 1.15;
+		}
+		60% {
+			rotate: 10deg;
+		}
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.skill-pill:hover > svg {
+			animation: icon-wiggle 600ms var(--ease-spring);
+		}
+	}
+
+	/* ── Theme switch: circular reveal (driven from ThemeSwitch.astro) ── */
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation: none;
+		mix-blend-mode: normal;
+	}
+</style>
+
+<script>
+	const html = document.documentElement;
+	html.classList.add("motion-ready");
+
+	const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+	const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+	/* ── Scroll reveal ── */
+	document.querySelectorAll<HTMLElement>("[data-reveal-stagger]").forEach((container) => {
+		for (const child of container.children) {
+			if (child instanceof HTMLElement && !child.hasAttribute("data-reveal")) {
+				child.dataset.reveal = container.dataset.revealStagger ?? "";
+			}
+		}
+	});
+
+	const STAGGER = 75;
+	const MAX_STAGGER = 600;
+
+	function reveal(el: HTMLElement, delay: number) {
+		el.style.setProperty("--reveal-delay", `${delay}ms`);
+		el.classList.add("is-visible");
+		// Once settled, drop the reveal styles so they can't fight hover or expand animations.
+		// .is-visible stays: the timeline and skill pills key off it.
+		window.setTimeout(() => el.removeAttribute("data-reveal"), delay + 1100);
+	}
+
+	const revealables = document.querySelectorAll<HTMLElement>("[data-reveal]");
+
+	if (!html.classList.contains("motion")) {
+		revealables.forEach((el) => el.classList.add("is-visible"));
+	} else {
+		const io = new IntersectionObserver(
+			(entries) => {
+				const shown: HTMLElement[] = [];
+				for (const entry of entries) {
+					const el = entry.target as HTMLElement;
+					if (entry.isIntersecting) shown.push(el);
+					// Already scrolled past (e.g. reload mid-page): show without animating off-screen work.
+					else if (entry.boundingClientRect.bottom < 0) {
+						io.unobserve(el);
+						reveal(el, 0);
+					}
+				}
+				shown
+					.sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1))
+					.forEach((el, i) => {
+						io.unobserve(el);
+						reveal(el, Math.min(i * STAGGER, MAX_STAGGER) + (Number(el.dataset.revealDelay) || 0));
+					});
+			},
+			{ rootMargin: "0px 0px -8% 0px", threshold: 0 },
+		);
+		revealables.forEach((el) => io.observe(el));
+
+		// A jump (anchor, keyboard shortcut, fast fling) can carry elements from below the
+		// viewport to above it without ever intersecting, so the observer never fires for them.
+		let sweeping = false;
+		window.addEventListener(
+			"scroll",
+			() => {
+				if (sweeping) return;
+				sweeping = true;
+				requestAnimationFrame(() => {
+					sweeping = false;
+					document.querySelectorAll<HTMLElement>("[data-reveal]:not(.is-visible)").forEach((el) => {
+						if (el.getBoundingClientRect().bottom < 0) {
+							io.unobserve(el);
+							reveal(el, 0);
+						}
+					});
+				});
+			},
+			{ passive: true },
+		);
+	}
+
+	/* ── Count-up ── */
+	if (!reduced) {
+		const counters = new IntersectionObserver((entries) => {
+			for (const entry of entries) {
+				if (!entry.isIntersecting) continue;
+				const el = entry.target as HTMLElement;
+				counters.unobserve(el);
+				const to = Number(el.dataset.countTo);
+				const duration = 1400;
+				const start = performance.now() + 250;
+				const tick = (now: number) => {
+					const t = Math.min(1, Math.max(0, (now - start) / duration));
+					const eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+					el.textContent = String(Math.round(eased * to));
+					if (t < 1) requestAnimationFrame(tick);
+				};
+				el.textContent = "0";
+				requestAnimationFrame(tick);
+			}
+		});
+		document.querySelectorAll<HTMLElement>("[data-count-to]").forEach((el) => counters.observe(el));
+	}
+
+	/* ── Spotlight: track the pointer inside cards ── */
+	if (finePointer) {
+		document.addEventListener(
+			"pointermove",
+			(e) => {
+				const card = (e.target as Element | null)?.closest?.<HTMLElement>(".spotlight");
+				if (!card) return;
+				const r = card.getBoundingClientRect();
+				card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+				card.style.setProperty("--my", `${e.clientY - r.top}px`);
+			},
+			{ passive: true },
+		);
+	}
+
+	if (finePointer && !reduced) {
+		/* ── Tilt ── */
+		document.querySelectorAll<HTMLElement>("[data-tilt]").forEach((el) => {
+			const max = Number(el.dataset.tilt) || 10;
+			el.addEventListener("pointermove", (e) => {
+				const r = el.getBoundingClientRect();
+				const x = (e.clientX - r.left) / r.width - 0.5;
+				const y = (e.clientY - r.top) / r.height - 0.5;
+				el.style.transition = "transform 120ms ease-out, scale 300ms var(--ease-spring)";
+				el.style.transform = `perspective(700px) rotateX(${(-y * max).toFixed(2)}deg) rotateY(${(x * max).toFixed(2)}deg)`;
+			});
+			el.addEventListener("pointerleave", () => {
+				el.style.transition = "transform 700ms var(--ease-spring), scale 300ms var(--ease-spring)";
+				el.style.transform = "";
+			});
+		});
+
+		/* ── Magnetic children ── */
+		document.querySelectorAll<HTMLElement>("[data-magnetic] > *").forEach((el) => {
+			el.addEventListener("pointermove", (e) => {
+				const r = el.getBoundingClientRect();
+				const dx = e.clientX - (r.left + r.width / 2);
+				const dy = e.clientY - (r.top + r.height / 2);
+				el.style.transition = "translate 120ms ease-out, background-color 150ms ease";
+				el.style.translate = `${(dx * 0.35).toFixed(1)}px ${(dy * 0.35).toFixed(1)}px`;
+			});
+			el.addEventListener("pointerleave", () => {
+				el.style.transition = "translate 600ms var(--ease-spring), background-color 150ms ease";
+				el.style.translate = "";
+			});
+		});
+	}
+</script>

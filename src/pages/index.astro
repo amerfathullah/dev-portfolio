@@ -17,20 +17,32 @@ const { name, label } = basics;
 ---
 
 <Layout title={`${name} Portfolio - ${label}`}>
-	<main class="relative grid max-w-7xl gap-12 p-8 max-sm:py-16 md:grid-cols-6 md:p-16 xl:gap-24 print:max-w-none print:grid-cols-1 print:gap-0 print:p-0">
-		<div class="space-y-6 md:col-span-2 print:col-span-1 print:flex print:flex-col print:gap-1 print:space-y-0">
-			<Hero />
-			<About />
-			<KoFi />
-			<ThemeSwitch />
+	<!--
+		Screen: sidebar (profile, summary, education) + wide column (experience, projects),
+		then a full-width Skills band.
+		Phone (single column) and print: both column wrappers become display:contents so the
+		sections join one grid, and order-* restores Hero → Summary → Experience → Projects → Skills → Education.
+	-->
+	<main class="relative grid max-w-7xl gap-12 p-8 max-sm:py-16 md:grid-cols-6 md:p-16 xl:gap-24 print:max-w-none print:grid-cols-1 print:gap-1 print:p-0">
+		<div class="space-y-12 max-md:contents md:col-span-2 print:contents">
+			<div class="space-y-6 print:contents">
+				<Hero />
+				<About />
+			</div>
+			<Education className="max-md:order-4 print:order-4" />
+			<div class="space-y-6 print:contents">
+				<KoFi />
+				<ThemeSwitch />
+			</div>
 		</div>
-		<div class="space-y-12 md:col-span-4 print:col-span-1 print:flex print:flex-col print:gap-1 print:space-y-0">
-			<Experience />
-			<Projects />
-			<Skills />
-			<Education className="order-first print:order-none" />
+		<div class="space-y-12 max-md:contents md:col-span-4 print:contents">
+			<Experience className="max-md:order-1 print:order-1" />
+			<Projects className="max-md:order-2 print:order-2" />
 		</div>
-		<Tail />
+		<Skills className="max-md:order-3 md:col-span-6 print:order-3" />
+		<div class="max-md:order-last md:col-span-6 print:hidden">
+			<Tail />
+		</div>
 	</main>
 
 	<KeyboardManager />

@@ -1,6 +1,7 @@
 ---
 import { basics, skills } from "@cv";
 import "@/styles/global.css";
+import Motion from "@/components/Motion.astro";
 
 interface Props {
 	title: string;
@@ -102,19 +103,32 @@ const keywords = skills.map((skill: { name: string }) => skill.name).join(", ");
 		<meta name="twitter:image" content={absoluteImageUrl} />
 		<meta name="twitter:image:alt" content={`${name} - ${label}`} />
 
-		<meta name="theme-color" content="#121212" />
+		<meta name="theme-color" content="#faf9f5" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#181715" media="(prefers-color-scheme: dark)" />
 
 		<!-- Preconnect to Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-		<!-- Load font non-blocking -->
+		<!-- DESIGN.md fonts: Cormorant Garamond (display), Inter (body), JetBrains Mono (code) -->
 		<link
-			href="https://fonts.googleapis.com/css2?family=Itim&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
 			rel="stylesheet"
 		/>
 
 		<link rel="stylesheet" href="/themes/themes.css" />
+
+		<!-- Opt in to entrance/scroll animations before first paint. If the motion script never
+		     runs, fall back to the plain page so nothing stays hidden. -->
+		<script is:inline>
+			if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+				const root = document.documentElement;
+				root.classList.add("motion");
+				setTimeout(() => {
+					if (!root.classList.contains("motion-ready")) root.classList.remove("motion");
+				}, 2500);
+			}
+		</script>
 		<script
 			is:inline
 			type="application/ld+json"
@@ -158,13 +172,8 @@ const keywords = skills.map((skill: { name: string }) => skill.name).join(", ");
 			])}
 		/>
 	</head>
-	<body data-theme={theme} class="bg-skin-fill relative">
-		<div class="absolute top-0 -z-10 h-full w-full print:hidden">
-			<div
-				class="bg-skin-hue/10 absolute top-0 right-auto bottom-auto left-[20%] h-[200px] w-[200px] -translate-x-[30%] translate-y-[20%] rounded-full blur-[80px] invert-0 dark:bg-white/5"
-			>
-			</div>
-		</div>
+	<body data-theme={theme} class="bg-skin-fill text-skin-base relative font-sans antialiased">
+		<Motion />
 		<slot />
 		<style is:global>
 			@reference "@/styles/global.css";
@@ -173,6 +182,18 @@ const keywords = skills.map((skill: { name: string }) => skill.name).join(", ");
 			figure {
 				margin: 0;
 				padding: 0;
+			}
+
+			/* Screen only: in print, body must inherit the 9pt html size from global.css */
+			@media screen {
+				body {
+					font-size: 16px;
+					line-height: 1.55;
+				}
+			}
+
+			::selection {
+				background: rgba(var(--color), 0.2);
 			}
 
 			a {
@@ -197,18 +218,7 @@ const keywords = skills.map((skill: { name: string }) => skill.name).join(", ");
 			h4 {
 				@apply text-skin-base;
 				margin: 0;
-				font-family:
-					system-ui,
-					-apple-system,
-					BlinkMacSystemFont,
-					"Segoe UI",
-					Roboto,
-					Oxygen,
-					Ubuntu,
-					Cantarell,
-					"Open Sans",
-					"Helvetica Neue",
-					sans-serif;
+				font-family: var(--font-sans);
 			}
 
 			/* p {
@@ -225,7 +235,7 @@ const keywords = skills.map((skill: { name: string }) => skill.name).join(", ");
 				@apply border border-red-500/50 bg-red-500/5;
 			}
 			#hotkeypad [data-backdrop] {
-				@apply !bg-zinc-800 !opacity-80;
+				@apply bg-zinc-800! opacity-80!;
 			}
 
 			@media print {

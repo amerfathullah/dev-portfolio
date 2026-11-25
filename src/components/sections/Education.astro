@@ -6,7 +6,7 @@ import { certificates } from "@cv";
 ---
 
 <Section className={Astro.props.className} title="Education">
-	<ul class="space-y-4 py-3 print:space-y-0 print:py-0">
+	<ul class="space-y-4 py-3 print:space-y-0 print:py-0" data-reveal-stagger>
 		{
 			education.map(({ institution, startDate, endDate, area, studyType, score, url }) => {
 				const formatDate = (date: string) => new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
@@ -35,24 +35,24 @@ import { certificates } from "@cv";
 							</svg>
 							<div class="relative w-full items-baseline justify-between gap-2 print:flex print:flex-col print:gap-0">
 								<div class="print:flex print:w-full print:items-baseline print:justify-between">
-									<h3 class="mr-6 items-baseline gap-x-2 gap-y-0.5 font-medium print:mr-0 print:shrink-0 print:text-[10pt] print:font-bold print:text-[#414141]">
+									<h3 class="mr-6 items-baseline gap-x-2 gap-y-0.5 font-medium print:mr-0 print:shrink-0 print:text-[10pt] print:font-medium print:text-ink">
 										<a
 											target="_blank"
-											class="hover:text-skin-hue group flex items-center gap-[6px] decoration-dotted underline-offset-[5px] hover:underline"
+											class="hover:text-skin-hue group flex items-center gap-1.5 decoration-dotted underline-offset-[5px] hover:underline"
 											href={url}
 										>
 											{studyType ? `${studyType} in ${area}` : area}
 										</a>
 									</h3>
-									<time class="text-skin-muted top-0 right-0 text-xs md:absolute md:block print:static print:ml-auto print:shrink-0 print:text-[8pt] print:italic print:text-[#999]">
+									<time class="text-skin-muted block text-xs print:static print:ml-auto print:shrink-0 print:text-[8pt] print:italic print:text-muted">
 										{years}
 									</time>
 								</div>
 								<div class="print:flex print:w-full print:items-baseline print:justify-between">
-									<div class="text-skin-muted text-sm print:text-[9pt] print:italic print:text-[#DC3522]">
+									<div class="text-skin-muted text-sm print:text-[8.5pt] print:italic print:text-primary-active">
 										{institution}
 									</div>
-									{score && <span class="hidden print:inline print:ml-auto print:text-[8pt] print:text-[#5D5D5D]">CGPA: {score}</span>}
+									{score && <span class="hidden print:inline print:ml-auto print:text-[8pt] print:text-body">CGPA: {score}</span>}
 								</div>
 							</div>
 						</div>
@@ -65,16 +65,16 @@ import { certificates } from "@cv";
 	{
 		certificates.length > 0 && (
 			<>
-				<h3 class="relative flex w-full items-center gap-3 pb-4 text-3xl print:gap-1 print:pb-1 print:text-[14pt] print:font-bold print:text-[#333] print:border-b print:border-[#999] print:mt-2">Certificates</h3>
-				<ul class="flex flex-wrap gap-4 print:hidden">
+				<h3 data-reveal="rise" class="display relative flex w-full items-center gap-3 pt-4 pb-2 text-4xl print:gap-1 print:pt-0 print:pb-1 print:text-[16pt] print:font-medium print:text-body print:border-b print:border-hairline print:mt-2">Certificates</h3>
+				<ul class="flex flex-wrap gap-3 print:hidden" data-reveal-stagger="scale">
 					{certificates
 						.filter(({ image }) => image)
 						.map(({ name, image, url }) => {
-							const badge = <img src={image} alt={name} title={name} width="112" height="112" loading="lazy" class="h-28 w-28" />;
+							const badge = <img src={image} alt={name} title={name} width="80" height="80" loading="lazy" class="h-20 w-20" />;
 							return (
 								<li>
 									{url ? (
-										<a href={url} target="_blank" class="block transition-transform hover:scale-105">
+										<a href={url} target="_blank" class="block transition-transform hover:scale-105" data-tilt="18">
 											{badge}
 										</a>
 									) : (
@@ -84,7 +84,7 @@ import { certificates } from "@cv";
 							);
 						})}
 				</ul>
-				<ul class="space-y-4 py-3 print:space-y-0 print:py-0">
+				<ul class="space-y-4 py-3 print:space-y-0 print:py-0" data-reveal-stagger>
 					{certificates.map(({ name, date, issuer, url, image }) => {
 						const certificateYear = date && new Date(date).getFullYear();
 						return (
@@ -108,20 +108,20 @@ import { certificates } from "@cv";
 										<path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
 									</svg>
 									<div class="relative w-full items-baseline justify-between gap-2 print:flex print:items-baseline print:gap-2">
-										<h3 class="mr-6 items-baseline gap-x-2 gap-y-0.5 font-medium print:mr-0 print:shrink-0 print:text-[10pt] print:font-normal print:text-[#333]">
+										<h3 class="mr-6 items-baseline gap-x-2 gap-y-0.5 font-medium print:mr-0 print:shrink-0 print:text-[10pt] print:font-normal print:text-body">
 											<a
-												class="hover:text-skin-hue group text-skin-base flex items-center gap-[6px] decoration-dotted underline-offset-[5px] hover:underline"
+												class="hover:text-skin-hue group text-skin-base flex items-center gap-1.5 decoration-dotted underline-offset-[5px] hover:underline"
 												href={url}
 												target="_blank"
 											>
 												{name}
 											</a>
 										</h3>
-										<div class="text-skin-muted text-sm print:text-[8pt] print:italic print:text-[#DC3522]">
+										<div class="text-skin-muted text-sm print:text-[8pt] print:italic print:text-primary-active">
 											{issuer}
 										</div>
 										{certificateYear && (
-											<time class="text-skin-muted top-0 right-0 text-xs md:absolute md:block print:static print:ml-auto print:shrink-0 print:text-[8pt]">
+											<time class="text-skin-muted block text-xs print:static print:ml-auto print:shrink-0 print:text-[8pt]">
 												{certificateYear}
 											</time>
 										)}

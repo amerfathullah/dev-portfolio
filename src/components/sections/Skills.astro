@@ -54,32 +54,55 @@ const SKILLS_ICONS: Record<string, any> = {
 	Firebase,
 	PHP,
 };
+
+// cv.json keyword → SKILLS_ICONS key, where the names differ
+const ICON_ALIASES: Record<string, string> = {
+	HTML5: "HTML",
+	CSS3: "CSS",
+	"Node.js": "Node",
+	"Next.js": "Next",
+	".NET": "Dotnet",
+	"ASP.NET Core": "Dotnet",
+	Astro: "AstroIcon",
+	"Tailwind CSS": "Tailwind",
+	"Docker Compose": "Docker",
+	"React Native": "React",
+	"Angular Material": "Angular",
+};
 ---
 
 <Section className={Astro.props.className} title="Skills">
-	{/* Web view: icon badges */}
-	<ul class="[&>li>svg]:text-skin-hue inline-flex flex-wrap gap-6 print:hidden [&>li>svg]:size-5 [&>li]:text-sm">
-		{
-			skills.map(({ name }) => {
-				const iconName = name === "Next.js" ? "Next" : name === ".NET" ? "Dotnet" : name === "Astro" ? "AstroIcon" : name;
-				const Icon = SKILLS_ICONS[iconName];
-
-				return (
-					<li class="border-skin-hue/20s bg-skin-button-accent/20s borders border-solids flex items-center gap-1 rounded-md px-2 py-0.5 text-xs text-skin-muted">
-						{Icon && <Icon />} <span>{name}</span>
-					</li>
-				);
-			})
-		}
-	</ul>
+	{/* Web view: one block per category, keywords as icon pills */}
+	{/* Same card surface as Projects (theme-aware) */}
+	<div class="bg-skin-button-muted text-skin-base rounded-xl p-8 print:hidden">
+		<div class="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
+			{
+				skills.map(({ name, keywords }) => (
+					<div class="skill-group flex flex-col gap-3">
+						<p class="text-skin-muted text-xs leading-[1.4] font-medium tracking-[1.5px] uppercase">{name}</p>
+						<ul class="[&>li>svg]:text-skin-hue flex flex-wrap gap-2 [&>li>svg]:size-4" aria-label={name}>
+							{keywords.map((keyword, i) => {
+								const Icon = SKILLS_ICONS[ICON_ALIASES[keyword] ?? keyword];
+								return (
+									<li style={`--i: ${i}`} class="skill-pill bg-skin-fill text-skin-base flex items-center gap-1.5 rounded-full px-3 py-1 text-[13px] leading-[1.4] font-medium">
+										{Icon && <Icon />} <span>{keyword}</span>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+				))
+			}
+		</div>
+	</div>
 
 	{/* Print view: ATS-friendly categorized keyword list */}
 	<ul class="hidden print:block print:space-y-0">
 		{
 			skills.map(({ name, keywords }) => (
-				<li class="print:py-[1px]">
-					<span class="print:text-[9pt] print:font-semibold print:text-[#414141]">{name}:&nbsp;</span>
-					<span class="print:text-[9pt] print:text-[#333]">{keywords.join(", ")}</span>
+				<li class="print:py-px">
+					<span class="print:text-[8.5pt] print:font-medium print:text-ink">{name}:&nbsp;</span>
+					<span class="print:text-[8.5pt] print:text-body">{keywords.join(", ")}</span>
 				</li>
 			))
 		}

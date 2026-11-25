@@ -9,11 +9,16 @@ const now = new Date();
 const yearsOfExperience = Math.floor(
 	(now.getTime() - startDate.getTime()) / (365.25 * 24 * 60 * 60 * 1000)
 );
-const dynamicSummary = summary.replace(/\d+\+?\s*years?\s*of\s*experience/, `${yearsOfExperience}+ years of experience`);
+// Split around "N+ years of experience" so the number can count up on screen.
+const match = summary.match(/\d+\+?\s*years?\s*of\s*experience/);
+const before = match ? summary.slice(0, match.index) : summary;
+const after = match ? summary.slice(match.index! + match[0].length) : "";
 ---
 
 <Section title="Summary">
-	<p>
-		{dynamicSummary}
+	<p data-reveal>
+		{before}{match && (
+			<><span class="tabular-nums" data-count-to={yearsOfExperience}>{yearsOfExperience}</span>+ years of experience</>
+		)}{after}
 	</p>
 </Section>
