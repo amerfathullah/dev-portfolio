@@ -50,14 +50,5 @@ export default defineConfig({
       subsets: ['latin'],
       fallbacks: ['Garamond', 'Times New Roman', 'serif'],
     },
-    {
-      provider: fontProviders.google(),
-      name: 'JetBrains Mono',
-      cssVariable: '--font-jetbrains',
-      weights: [400],
-      styles: ['normal'],
-      subsets: ['latin'],
-      fallbacks: ['ui-monospace', 'monospace'],
-    },
   ],
 });

@@ -8,8 +8,14 @@ import LinkedIn from "@/icons/LinkedIn.astro";
 import GitHub from "@/icons/GitHub.astro";
 import WorldMap from "@/icons/WorldMap.astro";
 import type { SocialIcon } from "@/types";
-import { Image } from "astro:assets";
-import image from "../../../public/me_avatar.avif";
+import sharp from "sharp";
+import { fileURLToPath } from "node:url";
+
+// The avatar is the LCP element. Inline it (256px AVIF, ~5 KB: sharp at 2x of the 128px
+// box) so it paints with the HTML instead of waiting on a request that competes with fonts.
+const avatarPath = fileURLToPath(new URL("../../../public/me_avatar.avif", import.meta.url));
+const avatar = await sharp(avatarPath).resize(256, 256).avif({ quality: 50 }).toBuffer();
+const avatarSrc = `data:image/avif;base64,${avatar.toString("base64")}`;
 
 const { name, label, location, profiles, phone, email } = basics;
 const { city, region } = location;
@@ -123,15 +129,7 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" â€
 			</footer>
 		</div>
 		<figure class="relative w-fit print:hidden" data-tilt="12">
-			<Image
-				src={image}
-				alt={name}
-				width={128}
-				height={128}
-				densities={[1, 2]}
-				loading="eager"
-				fetchpriority="high"
-			/>
+			<img src={avatarSrc} alt={name} width="128" height="128" />
 			<div class="pointer-events-none absolute -inset-2">
 				<div
 					class="hero-line hero-line-y bg-skin-fill-muted absolute -inset-y-8 right-0 w-px mask-[linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"

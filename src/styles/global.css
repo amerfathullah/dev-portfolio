@@ -51,10 +51,11 @@
     --color-primary-active: #a9583e;
 
     /* DESIGN.md — typography (Copernicus/StyreneB substitutes) */
-    /* --font-inter / --font-cormorant / --font-jetbrains come from Astro's Fonts API (astro.config.mjs) */
+    /* --font-inter / --font-cormorant come from Astro's Fonts API (astro.config.mjs). Mono only styles
+       the two <kbd> chips in the shortcut hint, so it uses the system face instead of a 21 KB download. */
     --font-display: var(--font-cormorant);
     --font-sans: var(--font-inter);
-    --font-mono: var(--font-jetbrains);
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   }
 
 /* display-* tokens: serif, regular weight, negative tracking.
