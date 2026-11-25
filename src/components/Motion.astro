@@ -58,10 +58,10 @@
 	   for the script (which only runs once the whole document has parsed). It gets a CSS-only entrance
 	   that keeps it visible throughout (no fade from transparent). The script then hides just the
 	   elements below the fold (.reveal-pending) and fades those in as they scroll into view. */
+	/* transform/opacity only: filter (blur) and clip-path animations can't run on the compositor */
 	@keyframes reveal-in {
 		from {
 			transform: translate3d(0, 1.25rem, 0);
-			filter: blur(5px);
 		}
 	}
 	@keyframes reveal-rise {
@@ -91,26 +91,21 @@
 			animation: none;
 			opacity: 0;
 			transform: translate3d(0, 1.25rem, 0);
-			filter: blur(5px);
 		}
 		/* Headings: wipe down while rising */
 		html.motion .reveal-pending[data-reveal="rise"] {
-			filter: none;
 			transform: translate3d(0, 0.35em, 0);
 			clip-path: inset(0 0 100% 0);
 		}
 		html.motion .reveal-pending[data-reveal="scale"] {
-			filter: none;
 			transform: scale(0.85);
 		}
 		html.motion .reveal-pending.is-visible {
 			opacity: 1;
 			transform: none;
-			filter: none;
 			transition:
 				opacity 700ms var(--ease-out-expo),
 				transform 900ms var(--ease-out-expo),
-				filter 700ms var(--ease-out-expo),
 				clip-path 900ms var(--ease-out-expo);
 			transition-delay: var(--reveal-delay, 0ms);
 		}

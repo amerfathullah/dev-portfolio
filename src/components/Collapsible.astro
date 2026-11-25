@@ -94,6 +94,10 @@ const bodyId = `collapsible-${Math.random().toString(36).slice(2, 10)}`;
 	.collapsible[data-overflow] > .collapsible-body {
 		--fade: 0px;
 		mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade)), transparent);
+	}
+	/* Only transition once the reader toggles: the initial clamp at load must snap into place, or
+	   every card animates --fade (a custom property, so not compositor-friendly) during page load. */
+	.collapsible[data-toggled][data-overflow] > .collapsible-body {
 		transition: --fade 450ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.collapsible[data-clamped][data-overflow] > .collapsible-body {
@@ -280,6 +284,7 @@ const bodyId = `collapsible-${Math.random().toString(36).slice(2, 10)}`;
 
 	roots.forEach((root) => {
 		root.querySelector(":scope > [data-collapsible-toggle]")!.addEventListener("click", () => {
+			root.setAttribute("data-toggled", "");
 			setExpanded(root, !root.hasAttribute("data-expanded"));
 		});
 		observer.observe(root);

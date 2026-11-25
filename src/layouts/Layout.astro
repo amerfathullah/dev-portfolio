@@ -123,6 +123,22 @@ const keywords = skills.map((skill: { name: string }) => skill.name).join(", ");
 		<Font cssVariable="--font-cormorant" preload={[{ weight: 500, style: "normal" }]} />
 
 
+		<!-- Apply the theme before first paint. Done later (in ThemeSwitch's module script), dark-mode
+		     visitors get a light first frame and every transition-colors element then animates to dark
+		     (Lighthouse: non-composited color/border-color animations). Mirrors ThemeSwitch's logic. -->
+		<script is:inline>
+			(() => {
+				let saved = null;
+				try {
+					saved = localStorage.getItem("theme");
+				} catch {}
+				const dark =
+					saved === "dark" ||
+					((saved === null || saved === "system") && matchMedia("(prefers-color-scheme: dark)").matches);
+				document.documentElement.classList.add(dark ? "dark" : "light");
+			})();
+		</script>
+
 		<!-- Opt in to entrance/scroll animations before first paint. If the motion script never
 		     runs, fall back to the plain page so nothing stays hidden. -->
 		<script is:inline>

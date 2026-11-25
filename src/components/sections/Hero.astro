@@ -216,20 +216,20 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" �
 		color: inherit;
 	}
 
-	/* ── Entrance: avatar wipes in, crop marks draw, name rises word by word, then the rest ── */
+	/* ── Entrance: avatar settles in, crop marks draw, name rises word by word, then the rest ── */
 	/* The name is the LCP element: it must be painted (visible, unclipped) from the first frame,
-	   so words rise and sharpen in place rather than sliding out from behind a mask. */
+	   so words rise in place rather than sliding out from behind a mask.
+	   Entrances animate only transform/opacity so they run on the compositor (no filter: blur,
+	   which Lighthouse flags as a non-composited animation). */
 	@keyframes hero-word-in {
 		from {
 			transform: translateY(0.3em) rotate(3deg);
-			filter: blur(6px);
 		}
 	}
 	@keyframes hero-fade-up {
 		from {
 			opacity: 0;
 			transform: translateY(0.75rem);
-			filter: blur(4px);
 		}
 	}
 	@keyframes hero-pop {
@@ -240,11 +240,8 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" �
 	}
 	@keyframes hero-avatar-in {
 		from {
-			clip-path: inset(100% 0 0 0 round 1rem);
+			opacity: 0;
 			transform: scale(1.12);
-		}
-		to {
-			clip-path: inset(0 0 0 0 round 1rem);
 		}
 	}
 	@keyframes hero-line-y {
