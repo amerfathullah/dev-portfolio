@@ -224,6 +224,8 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" â€
 	}
 
 	/* â”€â”€ Entrance: avatar settles in, crop marks draw, name rises word by word, then the rest â”€â”€ */
+	/* Kept short (everything settles by ~1.2 s): the first screen counts as visually complete for
+	   Speed Index only once it stops moving. */
 	/* The name is the LCP element: it must be painted (visible, unclipped) from the first frame,
 	   so words rise in place rather than sliding out from behind a mask.
 	   Entrances animate only transform/opacity so they run on the compositor (no filter: blur,
@@ -268,18 +270,18 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" â€
 		:global(html.motion) .hero-word > span {
 			display: inline-block;
 			transform-origin: 0 100%;
-			animation: hero-word-in 1100ms var(--ease-out-expo) backwards;
-			animation-delay: calc(100ms + var(--i) * 120ms);
+			animation: hero-word-in 700ms var(--ease-out-expo) backwards;
+			animation-delay: calc(50ms + var(--i) * 80ms);
 		}
 		:global(html.motion) h2 {
-			animation: hero-fade-up 900ms var(--ease-out-expo) 650ms backwards;
+			animation: hero-fade-up 600ms var(--ease-out-expo) 300ms backwards;
 		}
 		:global(html.motion) .hero-location {
-			animation: hero-fade-up 900ms var(--ease-out-expo) 750ms backwards;
+			animation: hero-fade-up 600ms var(--ease-out-expo) 360ms backwards;
 		}
 		:global(html.motion) footer.no-print > * {
-			animation: hero-pop 700ms var(--ease-spring) backwards;
-			animation-delay: calc(850ms + var(--n, 0) * 60ms);
+			animation: hero-pop 500ms var(--ease-spring) backwards;
+			animation-delay: calc(420ms + var(--n, 0) * 40ms);
 		}
 		footer.no-print > :nth-child(2) { --n: 1; }
 		footer.no-print > :nth-child(3) { --n: 2; }
@@ -290,13 +292,13 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" â€
 		footer.no-print > :nth-child(8) { --n: 7; }
 
 		:global(html.motion) .avatar img {
-			animation: hero-avatar-in 1200ms var(--ease-out-expo) 100ms backwards;
+			animation: hero-avatar-in 800ms var(--ease-out-expo) backwards;
 		}
 		:global(html.motion) .hero-line-y {
-			animation: hero-line-y 1400ms var(--ease-out-expo) 200ms backwards;
+			animation: hero-line-y 900ms var(--ease-out-expo) 100ms backwards;
 		}
 		:global(html.motion) .hero-line-x {
-			animation: hero-line-x 1400ms var(--ease-out-expo) 300ms backwards;
+			animation: hero-line-x 900ms var(--ease-out-expo) 150ms backwards;
 		}
 	}
 </style>

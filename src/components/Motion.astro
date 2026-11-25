@@ -77,7 +77,7 @@
 	@media screen and (prefers-reduced-motion: no-preference) {
 		/* :where() keeps these at the same specificity as .reveal-pending below, which must win */
 		html.motion :is([data-reveal], [data-reveal-stagger] > *):where(:not(.reveal-done)) {
-			animation: reveal-in 900ms var(--ease-out-expo) backwards;
+			animation: reveal-in 650ms var(--ease-out-expo) backwards;
 		}
 		html.motion [data-reveal="rise"]:where(:not(.reveal-done)) {
 			animation-name: reveal-rise;
@@ -120,7 +120,7 @@
 		html.motion .timeline-item .timeline-rail::before {
 			transform: scaleY(0);
 			transform-origin: top;
-			transition: transform 1400ms var(--ease-out-expo) calc(var(--reveal-delay, 0ms) + 250ms);
+			transition: transform 1000ms var(--ease-out-expo) calc(var(--reveal-delay, 0ms) + 150ms);
 		}
 		html.motion .timeline-item.is-visible .timeline-rail::before {
 			transform: scaleY(1);
@@ -356,8 +356,8 @@
 				const el = entry.target as HTMLElement;
 				counters.unobserve(el);
 				const to = Number(el.dataset.countTo);
-				const duration = 1400;
-				const start = performance.now() + 250;
+				const duration = 800;
+				const start = performance.now() + 100;
 				const tick = (now: number) => {
 					const t = Math.min(1, Math.max(0, (now - start) / duration));
 					const eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
