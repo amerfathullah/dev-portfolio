@@ -217,9 +217,12 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" �
 	}
 
 	/* ── Entrance: avatar wipes in, crop marks draw, name rises word by word, then the rest ── */
+	/* The name is the LCP element: it must be painted (visible, unclipped) from the first frame,
+	   so words rise and sharpen in place rather than sliding out from behind a mask. */
 	@keyframes hero-word-in {
 		from {
-			transform: translateY(110%) rotate(6deg);
+			transform: translateY(0.3em) rotate(3deg);
+			filter: blur(6px);
 		}
 	}
 	@keyframes hero-fade-up {
@@ -256,19 +259,11 @@ const printInfo = [email, phone, linkedUrl, githubUrl].filter(Boolean).join(" �
 	}
 
 	@media screen and (prefers-reduced-motion: no-preference) {
-		:global(html.motion) .hero-word {
-			display: inline-block;
-			overflow: hidden;
-			vertical-align: top;
-			/* room for ascenders/descenders inside the mask */
-			padding: 0.1em 0.04em 0.16em;
-			margin: -0.1em -0.04em -0.16em;
-		}
 		:global(html.motion) .hero-word > span {
 			display: inline-block;
 			transform-origin: 0 100%;
 			animation: hero-word-in 1100ms var(--ease-out-expo) backwards;
-			animation-delay: calc(350ms + var(--i) * 120ms);
+			animation-delay: calc(100ms + var(--i) * 120ms);
 		}
 		:global(html.motion) h2 {
 			animation: hero-fade-up 900ms var(--ease-out-expo) 650ms backwards;

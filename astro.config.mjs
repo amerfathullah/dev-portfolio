@@ -43,6 +43,10 @@ export default defineConfig({
       provider: fontProviders.local(),
       name: 'Inter',
       cssVariable: '--font-inter',
+      // Body text reflows when Inter swaps in over its Arial fallback (the only remaining CLS).
+      // The roman subset is preloaded and ~17 KB, so it is almost always ready for first paint;
+      // "optional" keeps the fallback for that visit instead of shifting text if it is late.
+      display: 'optional',
       fallbacks: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       options: {
         variants: [

@@ -64,7 +64,8 @@ def latin_sources(css: str) -> dict[tuple[str, str], str]:
 def build(source: bytes, out: Path, wght) -> None:
     font = TTFont(io.BytesIO(source), lazy=False)
     options = subset.Options()
-    options.layout_features = ["kern", "liga", "calt", "ccmp", "locl", "mark", "mkmk"]
+    # tnum: the "N+ years" count-up uses tabular-nums; without it each digit change reflows the summary (CLS)
+    options.layout_features = ["kern", "liga", "calt", "ccmp", "locl", "mark", "mkmk", "tnum"]
     options.notdef_outline = True
     options.hinting = False
     subsetter = subset.Subsetter(options)
