@@ -1,8 +1,14 @@
 ---
 import Section from "../Section.astro";
 
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 import { education } from "@cv";
 import { certificates } from "@cv";
+
+// cv.json points badges at /public paths; import them so they get resized (80px + 2x) like the avatar
+const publicImages = import.meta.glob<{ default: ImageMetadata }>("/public/*.{avif,webp,png,jpg,jpeg}", { eager: true });
 ---
 
 <Section className={Astro.props.className} title="Education">
@@ -70,7 +76,12 @@ import { certificates } from "@cv";
 					{certificates
 						.filter(({ image }) => image)
 						.map(({ name, image, url }) => {
-							const badge = <img src={image} alt={name} title={name} width="80" height="80" loading="lazy" class="h-20 w-20" />;
+							const source = publicImages[`/public${image}`]?.default;
+							const badge = source ? (
+								<Image src={source} alt={name} title={name} width={80} height={80} densities={[1, 2]} format="avif" loading="lazy" class="h-20 w-20" />
+							) : (
+								<img src={image} alt={name} title={name} width="80" height="80" loading="lazy" class="h-20 w-20" />
+							);
 							return (
 								<li>
 									{url ? (

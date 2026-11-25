@@ -3,7 +3,8 @@
  * Site-wide motion layer.
  *
  * Markup hooks:
- *   data-reveal[="rise"|"scale"]   fades/rises the element in the first time it scrolls into view.
+ *   data-reveal[="rise"|"scale"]   fades/rises the element in the first time it scrolls into view
+ *                                  (on screen at load: a CSS-only entrance that never hides it).
  *   data-reveal-stagger[="…"]      marks every child as data-reveal (with that variant).
  *                                  Elements revealed in the same frame are staggered in DOM order.
  *   data-reveal-delay="ms"         extra delay on top of the stagger.
@@ -52,12 +53,60 @@
 		}
 	}
 
-	/* ── Scroll reveal ── */
+	/* ── Scroll reveal ──
+	   Content on screen at load holds the LCP element, so it must paint with the HTML and never wait
+	   for the script (which only runs once the whole document has parsed). It gets a CSS-only entrance
+	   that keeps it visible throughout (no fade from transparent). The script then hides just the
+	   elements below the fold (.reveal-pending) and fades those in as they scroll into view. */
+	@keyframes reveal-in {
+		from {
+			transform: translate3d(0, 1.25rem, 0);
+			filter: blur(5px);
+		}
+	}
+	@keyframes reveal-rise {
+		from {
+			transform: translate3d(0, 0.35em, 0);
+		}
+	}
+	@keyframes reveal-scale {
+		from {
+			transform: scale(0.85);
+		}
+	}
 	@media screen and (prefers-reduced-motion: no-preference) {
-		html.motion [data-reveal] {
+		/* :where() keeps these at the same specificity as .reveal-pending below, which must win */
+		html.motion :is([data-reveal], [data-reveal-stagger] > *):where(:not(.reveal-done)) {
+			animation: reveal-in 900ms var(--ease-out-expo) backwards;
+		}
+		html.motion [data-reveal="rise"]:where(:not(.reveal-done)) {
+			animation-name: reveal-rise;
+		}
+		html.motion :is([data-reveal="scale"], [data-reveal-stagger="scale"] > *):where(:not(.reveal-done)) {
+			animation-name: reveal-scale;
+		}
+
+		/* Below the fold: hidden at once (no transition), then revealed */
+		html.motion .reveal-pending {
+			animation: none;
 			opacity: 0;
 			transform: translate3d(0, 1.25rem, 0);
 			filter: blur(5px);
+		}
+		/* Headings: wipe down while rising */
+		html.motion .reveal-pending[data-reveal="rise"] {
+			filter: none;
+			transform: translate3d(0, 0.35em, 0);
+			clip-path: inset(0 0 100% 0);
+		}
+		html.motion .reveal-pending[data-reveal="scale"] {
+			filter: none;
+			transform: scale(0.85);
+		}
+		html.motion .reveal-pending.is-visible {
+			opacity: 1;
+			transform: none;
+			filter: none;
 			transition:
 				opacity 700ms var(--ease-out-expo),
 				transform 900ms var(--ease-out-expo),
@@ -65,22 +114,7 @@
 				clip-path 900ms var(--ease-out-expo);
 			transition-delay: var(--reveal-delay, 0ms);
 		}
-		/* Headings: wipe down while rising */
-		html.motion [data-reveal="rise"] {
-			filter: none;
-			transform: translate3d(0, 0.35em, 0);
-			clip-path: inset(0 0 100% 0);
-		}
-		html.motion [data-reveal="scale"] {
-			filter: none;
-			transform: scale(0.85);
-		}
-		html.motion [data-reveal].is-visible {
-			opacity: 1;
-			transform: none;
-			filter: none;
-		}
-		html.motion [data-reveal="rise"].is-visible {
+		html.motion .reveal-pending[data-reveal="rise"].is-visible {
 			clip-path: inset(-0.3em);
 		}
 	}
@@ -226,14 +260,6 @@
 	const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
 	/* ── Scroll reveal ── */
-	document.querySelectorAll<HTMLElement>("[data-reveal-stagger]").forEach((container) => {
-		for (const child of container.children) {
-			if (child instanceof HTMLElement && !child.hasAttribute("data-reveal")) {
-				child.dataset.reveal = container.dataset.revealStagger ?? "";
-			}
-		}
-	});
-
 	const STAGGER = 75;
 	const MAX_STAGGER = 600;
 
@@ -242,14 +268,46 @@
 		el.classList.add("is-visible");
 		// Once settled, drop the reveal styles so they can't fight hover or expand animations.
 		// .is-visible stays: the timeline and skill pills key off it.
-		window.setTimeout(() => el.removeAttribute("data-reveal"), delay + 1100);
+		window.setTimeout(() => {
+			el.classList.remove("reveal-pending");
+			el.classList.add("reveal-done");
+		}, delay + 1100);
 	}
 
-	const revealables = document.querySelectorAll<HTMLElement>("[data-reveal]");
+	const byDocumentOrder = (a: Element, b: Element) =>
+		a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+
+	// Children of a data-reveal-stagger container reveal like data-reveal elements with its variant
+	const variants = new Map<HTMLElement, string>();
+	document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => variants.set(el, el.dataset.reveal ?? ""));
+	document.querySelectorAll<HTMLElement>("[data-reveal-stagger]").forEach((container) => {
+		for (const child of container.children) {
+			if (child instanceof HTMLElement && !variants.has(child)) {
+				variants.set(child, container.dataset.revealStagger ?? "");
+			}
+		}
+	});
+	const revealables = [...variants.keys()].sort(byDocumentOrder);
 
 	if (!html.classList.contains("motion")) {
 		revealables.forEach((el) => el.classList.add("is-visible"));
 	} else {
+		// Anything that starts above the bottom of the viewport has already painted: just mark it
+		// visible (which starts the timeline rails and skill pills). Only what is below gets hidden.
+		const fold = window.innerHeight;
+		const tops = revealables.map((el) => el.getBoundingClientRect().top); // measure all before writing
+		const pending: HTMLElement[] = [];
+		let onScreen = 0;
+		for (const [i, el] of revealables.entries()) {
+			if (tops[i] < fold) {
+				reveal(el, Math.min(onScreen++ * STAGGER, MAX_STAGGER) + (Number(el.dataset.revealDelay) || 0));
+			} else {
+				el.dataset.reveal = variants.get(el);
+				el.classList.add("reveal-pending");
+				pending.push(el);
+			}
+		}
+
 		const io = new IntersectionObserver(
 			(entries) => {
 				const shown: HTMLElement[] = [];
@@ -271,7 +329,7 @@
 			},
 			{ rootMargin: "0px 0px -8% 0px", threshold: 0 },
 		);
-		revealables.forEach((el) => io.observe(el));
+		pending.forEach((el) => io.observe(el));
 
 		// A jump (anchor, keyboard shortcut, fast fling) can carry elements from below the
 		// viewport to above it without ever intersecting, so the observer never fires for them.
@@ -283,7 +341,7 @@
 				sweeping = true;
 				requestAnimationFrame(() => {
 					sweeping = false;
-					document.querySelectorAll<HTMLElement>("[data-reveal]:not(.is-visible)").forEach((el) => {
+					document.querySelectorAll<HTMLElement>(".reveal-pending:not(.is-visible)").forEach((el) => {
 						if (el.getBoundingClientRect().bottom < 0) {
 							io.unobserve(el);
 							reveal(el, 0);
