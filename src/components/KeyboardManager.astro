@@ -215,6 +215,15 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		--hotkeypad-fg-muted: rgb(var(--color-text-muted));
 	}
 
+	/* Shortcut chips ("ctrl", "P"). The library sizes them with `width: fit-content` followed by a
+	   `-moz-fit-content` fallback, and the CSS minifier keeps only the last one, which Chrome drops.
+	   They then took the library's 1.5rem icon width and "ctrl" overflowed into the next chip.
+	   [data-container] lifts this above the library's rule, which is injected later. */
+	:global(#hotkeypad [data-container] [data-hotkey] div span) {
+		width: max-content;
+		white-space: nowrap;
+	}
+
 	:global(.dark) #hotkeypad {
 		--hotkeypad-bg-kbd: rgb(var(--muted));
 		--hotkeypad-bg-backdrop: rgba(0, 0, 0, 0.7);
