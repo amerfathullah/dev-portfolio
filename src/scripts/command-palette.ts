@@ -1,6 +1,9 @@
 // Command palette (Cmd/Ctrl + K). Built as a standalone bundle and injected lazily by
 // KeyboardManager.astro, so the hotkeypad library never sits on the critical request chain.
 import HotKeyPad from "hotkeypad";
+// The library's stylesheet ships inside this bundle. As its own <link rel="stylesheet"> it was fetched
+// at Highest priority even when injected after load, which Lighthouse counts as a critical chain.
+import paletteCss from "hotkeypad/index.css?inline";
 
 interface Info {
 	id: string;
@@ -16,6 +19,11 @@ const PRINT_ICON = `<svg style="margin-right: 8px" width="16" height="16" xmlns=
 </svg>`;
 
 function createCommandPalette(): HotKeyPad {
+	// Applied before the library builds the palette, which starts hidden.
+	const style = document.createElement("style");
+	style.textContent = paletteCss;
+	document.head.append(style);
+
 	const hotkeypad = new HotKeyPad();
 	const info = hotkeypad.instance.getAttribute("data-info") ?? "[]";
 	const profiles = (JSON.parse(info) as Info[]).map(({ url, hotkey, icon, id, section, title }) => ({

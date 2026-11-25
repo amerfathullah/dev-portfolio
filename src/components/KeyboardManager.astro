@@ -1,7 +1,6 @@
 ---
-// The library's stylesheet is only needed once the palette exists, so it is not inlined into the
-// render-blocking page CSS: the loader below fetches it together with the palette bundle.
-import paletteCss from "hotkeypad/index.css?url";
+// The library's stylesheet is only needed once the palette exists, so it is not in the
+// render-blocking page CSS: it is bundled into the palette script below, which injects it.
 import { type SocialIcon } from "@/types";
 import { basics } from "@cv";
 // Astro won't inline a script that has a dynamic import, so a lazy import() would itself be a
@@ -102,23 +101,15 @@ const profilesInfo = profiles.map(({ network, url }) => {
 <!-- The palette library stays off the critical request chain: the inline loader below injects its
      bundle once the page has loaded and the main thread is idle, or right away if someone asks first.
      (define:vars wraps the script in its own function scope.) -->
-<script is:inline define:vars={{ paletteSrc, paletteCss, paletteIsModule }}>
+<script is:inline define:vars={{ paletteSrc, paletteIsModule }}>
 	let requested = false;
 	const load = () => {
 		if (requested) return;
 		requested = true;
-		// The stylesheet must apply before the library builds the palette (it starts hidden), so the
-		// bundle is injected once the stylesheet has loaded. On error, still load it so the shortcut works.
-		const link = document.createElement("link");
-		link.rel = "stylesheet";
-		link.href = paletteCss;
-		link.onload = link.onerror = () => {
-			const script = document.createElement("script");
-			if (paletteIsModule) script.type = "module";
-			script.src = paletteSrc;
-			document.body.append(script);
-		};
-		document.head.append(link);
+		const script = document.createElement("script");
+		if (paletteIsModule) script.type = "module";
+		script.src = paletteSrc;
+		document.body.append(script);
 	};
 	const open = () => {
 		if (window.openCommandPalette) return window.openCommandPalette();
