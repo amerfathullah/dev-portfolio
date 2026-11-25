@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "fonts": "python3 scripts/subset-fonts.py"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.6",
