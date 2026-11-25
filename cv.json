@@ -212,16 +212,49 @@
   ],
   "certificates": [
     {
-      "name": "Bachelor of Engineering (Electronics - Computer and Information) (Honours)",
-      "date": "2020-09-23",
-      "issuer": "International Islamic University Malaysia",
-      "url": "https://www.iium.edu.my/v2"
+      "name": "Google Cybersecurity Professional Certificate",
+      "date": "2026-11-23",
+      "issuer": "Google",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/ILBGCQP6CVZG",
+      "image": "/google-cybersecurity-professional-certificate-v-2.avif"
     },
     {
-      "name": "Certified Engineer in Computer Vision",
-      "date": "2020-12-01",
-      "issuer": "CertifAI",
-      "url": "https://cert.certifai.ai/1a9be791-bbb8-47af-be8f-57b70fa3028b"
+      "name": "Google Data Analytics Professional Certificate",
+      "date": "2026-10-31",
+      "issuer": "Google",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/N5P9IUGRWFJL",
+      "image": "/google-data-analytics-professional-certificate-v-3.avif"
+    },
+    {
+      "name": "Google AI Professional Certificate",
+      "date": "2026-10-14",
+      "issuer": "Google",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/KTJMWVPHHC9Y",
+      "image": "/google-ai-professional-certificate.avif"
+    },
+    {
+      "name": "Angular & NodeJS - The MEAN Stack Guide",
+      "date": "2026-10-13",
+      "issuer": "Academind",
+      "url": "https://www.udemy.com/certificate/UC-28b23906-1277-4cd9-b169-bf4dca1b7958"
+    },
+    {
+      "name": "Understanding Digital Transformation",
+      "date": "2026-10-10",
+      "issuer": "MyDIGITAL Corporation",
+      "url": "https://www.coursera.org/account/accomplishments/records/VF5F6ZUSPJR3"
+    },
+    {
+      "name": "Build an app with ASP.NET Core and Angular from scratch",
+      "date": "2022-07-01",
+      "issuer": "Udemy",
+      "url": "ude.my/UC-47d01744-374f-44d9-bf87-a10df7f1e666"
+    },
+    {
+      "name": "Flutter & Dart - The Complete Guide",
+      "date": "2022-02-01",
+      "issuer": "Academind",
+      "url": "https://www.udemy.com/certificate/UC-204d389d-7290-41b8-b858-c733d8f5b4bb"
     },
     {
       "name": "Artificial Intelligence from a Data Perspective",
@@ -230,16 +263,16 @@
       "url": "https://cert.certifai.ai/62fb724f-fb77-4117-99df-76a3169c3ef0"
     },
     {
-      "name": "Flutter & Dart - The Complete Guide [2022 Edition]",
-      "date": "2022-02-01",
-      "issuer": "Udemy",
-      "url": "https://www.udemy.com/certificate/UC-204d389d-7290-41b8-b858-c733d8f5b4bb"
+      "name": "Certified Engineer in Computer Vision",
+      "date": "2020-12-01",
+      "issuer": "CertifAI",
+      "url": "https://cert.certifai.ai/1a9be791-bbb8-47af-be8f-57b70fa3028b"
     },
     {
-      "name": "Build an app with ASP.NET Core and Angular from scratch",
-      "date": "2022-07-01",
-      "issuer": "Udemy",
-      "url": "ude.my/UC-47d01744-374f-44d9-bf87-a10df7f1e666"
+      "name": "Bachelor of Engineering (Electronics - Computer and Information) (Honours)",
+      "date": "2020-09-23",
+      "issuer": "International Islamic University Malaysia",
+      "url": "https://www.iium.edu.my/v2"
     }
   ],
   "skills": [

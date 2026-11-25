@@ -66,11 +66,29 @@ import { certificates } from "@cv";
 		certificates.length > 0 && (
 			<>
 				<h3 class="relative flex w-full items-center gap-3 pb-4 text-3xl print:gap-1 print:pb-1 print:text-[14pt] print:font-bold print:text-[#333] print:border-b print:border-[#999] print:mt-2">Certificates</h3>
+				<ul class="flex flex-wrap gap-4 print:hidden">
+					{certificates
+						.filter(({ image }) => image)
+						.map(({ name, image, url }) => {
+							const badge = <img src={image} alt={name} title={name} width="112" height="112" loading="lazy" class="h-28 w-28" />;
+							return (
+								<li>
+									{url ? (
+										<a href={url} target="_blank" class="block transition-transform hover:scale-105">
+											{badge}
+										</a>
+									) : (
+										badge
+									)}
+								</li>
+							);
+						})}
+				</ul>
 				<ul class="space-y-4 py-3 print:space-y-0 print:py-0">
-					{certificates.map(({ name, date, issuer, url }) => {
-						const certificateYear = new Date(date).getFullYear();
+					{certificates.map(({ name, date, issuer, url, image }) => {
+						const certificateYear = date && new Date(date).getFullYear();
 						return (
-							<li>
+							<li class:list={{ "hidden print:list-item": image }}>
 								<div class="flex items-baseline">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -102,9 +120,11 @@ import { certificates } from "@cv";
 										<div class="text-skin-muted text-sm print:text-[8pt] print:italic print:text-[#DC3522]">
 											{issuer}
 										</div>
-										<time class="text-skin-muted top-0 right-0 text-xs md:absolute md:block print:static print:ml-auto print:shrink-0 print:text-[8pt]">
-											{certificateYear}
-										</time>
+										{certificateYear && (
+											<time class="text-skin-muted top-0 right-0 text-xs md:absolute md:block print:static print:ml-auto print:shrink-0 print:text-[8pt]">
+												{certificateYear}
+											</time>
+										)}
 									</div>
 								</div>
 							</li>

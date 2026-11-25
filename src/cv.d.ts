@@ -76,9 +76,10 @@ interface Awards {
 
 interface Certificates {
   name: string;
-  date: DateStr;
+  date?: DateStr;
   issuer: string;
-  url: string;
+  url?: string;
+  image?: string;
 }
 
 interface Publications {
